@@ -1,0 +1,15 @@
+/* Fixes for the HypeUI theme */
+
+div.elgg-layout-content {
+	padding: 1em;
+}
+
+div#event_list + div {
+
+	float: none !important;
+	margin-bottom: 2em;
+}
+
+div#calendarmenucontainer {
+	left: 0px;
+}
