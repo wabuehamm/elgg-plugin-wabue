@@ -13,3 +13,29 @@ div#event_list + div {
 div#calendarmenucontainer {
 	left: 0px;
 }
+
+div#colorbox {
+        background: white;
+        border: 1px solid black;
+        padding: 1em;
+}
+
+div#cboxContent div.elgg-body {
+        overflow: scroll;
+}
+
+div#cboxWrapper, div#cboxLoadedContent {
+        width: 100%;
+}
+
+div#avatar-croppingtool {
+        display: none;
+}
+
+p.mtm {
+        margin-bottom: 1em;
+}
+
+#current-user-avatar {
+        border-right: 0px !important;
+}
