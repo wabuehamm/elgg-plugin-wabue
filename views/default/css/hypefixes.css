@@ -1,8 +1,12 @@
 /* Fixes for the HypeUI theme */
 
+/* Add padding, especially for mobile view */
+
 div.elgg-layout-content {
 	padding: 1em;
 }
+
+/* Fix Event Calendar plugin UI */
 
 div#event_list + div {
 
@@ -13,6 +17,8 @@ div#event_list + div {
 div#calendarmenucontainer {
 	left: 0px;
 }
+
+/* Fix modals */
 
 div#colorbox {
         background: white;
@@ -28,9 +34,13 @@ div#cboxWrapper, div#cboxLoadedContent {
         width: 100%;
 }
 
+/* Remove avatar cropping tool */
+
 div#avatar-croppingtool {
         display: none;
 }
+
+/* Fix user avatar display on profile page */
 
 p.mtm {
         margin-bottom: 1em;
@@ -38,4 +48,17 @@ p.mtm {
 
 #current-user-avatar {
         border-right: 0px !important;
+}
+
+/* Remove duplicate avatar in user administration */
+
+tr.elgg-item-user div.elgg-body div.media-left {
+        display: none;
+}
+
+/* Remove border and padding in user administration */
+
+tr.elgg-item-user div.elgg-body div.elgg-listing-summary-header {
+        border: 0px;
+        padding-top: 0px;
 }
