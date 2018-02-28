@@ -62,3 +62,9 @@ tr.elgg-item-user div.elgg-body div.elgg-listing-summary-header {
         border: 0px;
         padding-top: 0px;
 }
+
+/* Fixes for the tinymce plugin */
+
+textarea.elgg-input-longtext {
+        display: none !important;
+}
