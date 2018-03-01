@@ -68,3 +68,9 @@ tr.elgg-item-user div.elgg-body div.elgg-listing-summary-header {
 textarea.elgg-input-longtext {
         display: none !important;
 }
+
+/* Fix plugin list */
+
+div#elgg-plugin-list {
+       overflow: scroll;
+}
