@@ -10,12 +10,29 @@ div.elgg-layout-content {
 
 div#event_list + div {
 
-	float: none !important;
 	margin-bottom: 2em;
+	display: table-cell;
 }
 
 div#calendarmenucontainer {
 	left: 0px;
+}
+
+table.event_calendar_paged_table td {
+	padding-right: 0.5em;
+}
+
+div.elgg-inner > div#comments {
+	display: none;
+}
+
+div#event_list {
+	float: none !important;
+	max-width: none;
+}
+
+td.event_calendar_agenda_title {
+	width: 60% !important;
 }
 
 /* Fix modals */
@@ -74,3 +91,4 @@ textarea.elgg-input-longtext {
 div#elgg-plugin-list {
        overflow: scroll;
 }
+
