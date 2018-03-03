@@ -92,3 +92,12 @@ div#elgg-plugin-list {
        overflow: scroll;
 }
 
+/* Fix embed */
+
+.elgg-menu-longtext {
+    margin-top: 0px !important;
+}
+
+.elgg-pagination-after {
+    display: none !important;
+}
