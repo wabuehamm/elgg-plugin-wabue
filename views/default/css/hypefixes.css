@@ -6,6 +6,12 @@ div.elgg-layout-content {
 	padding: 1em;
 }
 
+/* Add scrolling */
+
+.elgg-item {
+    overflow: scroll;
+}
+
 /* Fix Event Calendar plugin UI */
 
 div#event_list + div {
