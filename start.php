@@ -7,6 +7,9 @@ function wabue_init() {
 	// Register E-Mail address to profile view
 	elgg_extend_view('profile/details', 'profile/email');
 
+    // Disable edit on profile view
+    elgg_extend_view('resources/profile/edit', 'profile/edit', 450);
+
 	// Register search menu item fix
 	elgg_register_plugin_hook_handler('register', 'menu:topbar', 'fixSearchMenuItem', 999);
 

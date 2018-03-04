@@ -107,3 +107,29 @@ div#elgg-plugin-list {
 .elgg-pagination-after {
     display: none !important;
 }
+
+/* Fix announcements */
+
+.elgg-message .elgg-listing-imprint {
+    color: white;
+}
+
+.elgg-message .elgg-menu-entity span {
+    color: white;
+}
+
+.elgg-message .elgg-listing-summary-header .elgg-image {
+    display: none;
+}
+
+.elgg-message strong {
+    color: white;
+}
+
+.site-announcement-attention {
+    background-color: red !important;
+}
+
+.site-announcement-general {
+    background-color: green !important;
+}
