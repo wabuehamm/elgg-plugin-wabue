@@ -3,99 +3,105 @@
 /* Add padding, especially for mobile view */
 
 div.elgg-layout-content {
-	padding: 1em;
+    padding: 1em;
 }
 
 /* Add scrolling */
 
 .elgg-item {
-    overflow: scroll;
+    overflow: auto;
 }
 
 /* Fix Event Calendar plugin UI */
 
 div#event_list + div {
 
-	margin-bottom: 2em;
-	display: table-cell;
+    margin-bottom: 2em;
+    display: table-cell;
 }
 
 div#calendarmenucontainer {
-	left: 0px;
+    left: 0px;
 }
 
 table.event_calendar_paged_table td {
-	padding-right: 0.5em;
+    padding-right: 0.5em;
 }
 
 div.elgg-inner > div#comments {
-	display: none;
+    display: none;
 }
 
 div#event_list {
-	float: none !important;
-	max-width: none;
+    float: none !important;
+    max-width: none;
 }
 
 td.event_calendar_agenda_title {
-	width: 60% !important;
+    width: 60% !important;
+}
+
+div.event_navigator {
+    float: none !important;
+    margin-bottom: 3em;
+    padding: 1em;
 }
 
 /* Fix modals */
 
 div#colorbox {
-        background: white;
-        border: 1px solid black;
-        padding: 1em;
+    background: white;
+    border: 1px solid black;
+    padding: 1em;
 }
 
 div#cboxContent div.elgg-body {
-        overflow: scroll;
+    overflow: auto;
 }
 
 div#cboxWrapper, div#cboxLoadedContent {
-        width: 100%;
+    width: 100%;
 }
 
 /* Remove avatar cropping tool */
 
 div#avatar-croppingtool {
-        display: none;
+    display: none;
 }
 
 /* Fix user avatar display on profile page */
 
 p.mtm {
-        margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 
 #current-user-avatar {
-        border-right: 0px !important;
+    border-right: 0px !important;
 }
 
 /* Remove duplicate avatar in user administration */
 
 tr.elgg-item-user div.elgg-body div.media-left {
-        display: none;
+    display: none;
 }
 
 /* Remove border and padding in user administration */
 
 tr.elgg-item-user div.elgg-body div.elgg-listing-summary-header {
-        border: 0px;
-        padding-top: 0px;
+    border: 0px;
+    padding-top: 0px;
 }
 
 /* Fixes for the tinymce plugin */
 
 textarea.elgg-input-longtext {
-        display: none !important;
+    display: none !important;
 }
 
 /* Fix plugin list */
 
 div#elgg-plugin-list {
-       overflow: scroll;
+    overflow: auto;
 }
 
 /* Fix embed */

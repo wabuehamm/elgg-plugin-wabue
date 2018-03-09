@@ -7,6 +7,8 @@ function wabue_init() {
 	// Register E-Mail address to profile view
 	elgg_extend_view('profile/details', 'profile/email');
 
+	elgg_extend_view('event_calendar/agenda_view', 'event_calendar/agenda_view_fix', 450);
+
     // Disable edit on profile view
     elgg_extend_view('resources/profile/edit', 'profile/edit', 450);
 
