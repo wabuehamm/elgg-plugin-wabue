@@ -19,8 +19,6 @@ function wabue_init() {
 
 	elgg_register_action("register", __DIR__ . "/actions/register.php");
 
-	//elgg_register_page_handler('wabue', 'wabue_pagehandler');
-
 }
 
 function fixSearchMenuItem($hook, $type, $value, $params) {
@@ -30,43 +28,6 @@ function fixSearchMenuItem($hook, $type, $value, $params) {
 		}
 	}
 	return $value;
-}
-
-function wabue_pagehandler($sections) {
-
-	if ($sections[0] == 'clean') {
-		if ($sections[1] == 'user') {
-			$users = elgg_get_entities(["types" => "user", "limit" => 0]);
-			echo "Deleting " . count($users) . " users...";
-			$blacklist = ["ploeger", "oliver.lange", "samuel.hesse", "thorsten.huebner"];
-			foreach ($users as $user) {
-				if (!in_array($user->username, $blacklist)) {
-					$user->delete();
-				}
-			}
-
-		} else if ($sections[1] == 'calendar') {
-
-			$events = elgg_get_entities(["types" => "object", "subtypes" => "event_calendar", "limit" => 0]);
-			echo "Deleting " . count($events) . " events...";
-			foreach ($events as $event) {
-				$event->delete();
-			}
-
-		} else if ($sections[1] == 'forum') {
-			$replies = elgg_get_entities(["types" => "object", "subtypes" => "discussion_reply", "limit" => 0]);
-			echo "Deleting " . count($replies) . " replies...";
-			foreach ($replies as $reply) {
-				$reply->delete();
-			}
-
-			$topics = elgg_get_entities(["types" => "object", "subtypes" => "discussion", "limit" => 0]);
-			echo "Deleting " . count($topics) . " topics...";
-			foreach ($topics as $topic) {
-				$topic->delete();
-			}
-		}
-	}
 }
 
 elgg_register_event_handler('init', 'system', 'wabue_init');

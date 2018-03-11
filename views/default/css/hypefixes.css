@@ -12,6 +12,10 @@ div.elgg-layout-content {
     overflow: auto;
 }
 
+div.elgg-listing-summary-body {
+    overflow: auto;
+}
+
 /* Fix Event Calendar plugin UI */
 
 div#event_list + div {
@@ -35,6 +39,10 @@ div.elgg-inner > div#comments {
 div#event_list {
     float: none !important;
     max-width: none;
+}
+
+td.event_calendar_agenda_time {
+    min-width: 7em;
 }
 
 td.event_calendar_agenda_title {
@@ -115,6 +123,10 @@ div#elgg-plugin-list {
 }
 
 /* Fix announcements */
+
+.elgg-message {
+    overflow: auto;
+}
 
 .elgg-message .elgg-listing-imprint {
     color: white;

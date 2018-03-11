@@ -15,10 +15,6 @@ if (!$module) {
         <div class="container">
             <div class="columns is-vcentered">
                 <div class="column is-4 is-offset-4">
-	<h1>Der neue Mitgliederbereich ist noch nicht online</h1>
-	<p>Wenn Du gerade eine Mail fälschlicherweise bekommen haben solltest, ignoriere sie bitte. Sorry für den Spam!
-
-Es wird nochmal eine Info-Mail zum neuen Mitgliederbereich geben, bevor es losgeht.</p>
 					<?php
 					echo $module;
 					?>
