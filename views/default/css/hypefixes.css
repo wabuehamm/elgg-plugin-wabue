@@ -151,3 +151,10 @@ div#elgg-plugin-list {
 .site-announcement-general {
     background-color: green !important;
 }
+
+/** Fix menu for smaller widths **/
+
+.elgg-page-topbar .nav-left {
+	width: 21em;
+	overflow: auto;
+}
