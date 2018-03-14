@@ -154,7 +154,9 @@ div#elgg-plugin-list {
 
 /** Fix menu for smaller widths **/
 
-.elgg-page-topbar .nav-left {
-	width: 21em;
-	overflow: auto;
+@media screen and (min-width: 769px) {
+    .elgg-page-topbar .nav-left {
+        width: 21em;
+        overflow: auto;
+    }
 }
