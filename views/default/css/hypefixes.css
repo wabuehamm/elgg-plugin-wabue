@@ -18,7 +18,7 @@ div.event_navigator {
     padding: 1em;
 }
 
-/* Fix list of events */
+/** Event-calendar: Fix agenda view **/
 
 div#event_list {
     float: none !important;
@@ -31,6 +31,12 @@ td.event_calendar_agenda_time {
 
 td.event_calendar_agenda_title {
     width: 60% !important;
+}
+
+/** Event-calendar: Fix list view **/
+
+.event_calendar_paged_header_section {
+    overflow: auto;
 }
 
 /** Fix duplicated comment field **/
@@ -74,6 +80,6 @@ textarea.elgg-input-longtext {
 
 /** Add missing hidden class **/
 
-.hidden {
+.elgg-item.hidden {
     display: none !important;
 }
