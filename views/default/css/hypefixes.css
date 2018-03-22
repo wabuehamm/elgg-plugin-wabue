@@ -39,6 +39,12 @@ td.event_calendar_agenda_title {
     overflow: auto;
 }
 
+/** Event-calendar: Fix full view **/
+
+#calendar {
+    overflow: auto;
+}
+
 /** Fix duplicated comment field **/
 
 div.elgg-inner > div#comments {

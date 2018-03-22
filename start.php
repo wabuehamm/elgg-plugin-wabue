@@ -22,6 +22,7 @@ function wabue_init() {
 
 	elgg_register_plugin_hook_handler('profile:fields', 'profile', 'hideFieldsFromSearch');
 
+    elgg_register_plugin_hook_handler('register', 'menu:title', 'add_eventcalendar_views');
 
 }
 
@@ -46,6 +47,25 @@ function hideFieldsFromSearch($hook_name, $entity_type, $return_value, $paramete
 		unset($return_value['city']);
 	}
 	return $return_value;
+}
+
+/**
+ * Add additional views to event calendar title menu
+ */
+function add_eventcalendar_views($hook, $type, $return, $params) {
+    if(!elgg_in_context("event_calendar")) {
+        return $return;
+    }
+    $paged_view = new ElggMenuItem('format_paged', elgg_echo('event_calendar:settings:paged'), elgg_get_site_url() . 'event_calendar/list/?format=paged');
+    $paged_view->setLinkClass('elgg-button elgg-button-action');
+    $return[] = $paged_view;
+    $agenda_view = new ElggMenuItem('format_agenda', elgg_echo('event_calendar:settings:agenda'), elgg_get_site_url() . 'event_calendar/list/?format=agenda');
+    $agenda_view->setLinkClass('elgg-button elgg-button-action');
+    $return[] = $agenda_view;
+    $full_view = new ElggMenuItem('format_full', elgg_echo('event_calendar:settings:full'), elgg_get_site_url() . 'event_calendar/list/?format=full');
+    $full_view->setLinkClass('elgg-button elgg-button-action');
+    $return[] = $full_view;
+    return $return;
 }
 
 elgg_register_event_handler('init', 'system', 'wabue_init');
