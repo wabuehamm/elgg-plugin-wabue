@@ -1,40 +1,24 @@
-/* Fixes for the HypeUI theme */
-
 /* Add padding, especially for mobile view */
 
 div.elgg-layout-content {
     padding: 1em;
 }
 
-/* Add scrolling */
+/* Remove duplicate avatar in user administration */
 
-.elgg-item {
-    overflow: auto;
-}
-
-div.elgg-listing-summary-body {
-    overflow: auto;
-}
-
-/* Fix Event Calendar plugin UI */
-
-div#event_list + div {
-
-    margin-bottom: 2em;
-    display: table-cell;
-}
-
-div#calendarmenucontainer {
-    left: 0px;
-}
-
-table.event_calendar_paged_table td {
-    padding-right: 0.5em;
-}
-
-div.elgg-inner > div#comments {
+tr.elgg-item-user div.elgg-body div.media-left {
     display: none;
 }
+
+/* Fix event calendar navigation widget */
+
+div.event_navigator {
+    float: none !important;
+    margin-bottom: 3em;
+    padding: 1em;
+}
+
+/* Fix list of events */
 
 div#event_list {
     float: none !important;
@@ -49,114 +33,47 @@ td.event_calendar_agenda_title {
     width: 60% !important;
 }
 
-div.event_navigator {
-    float: none !important;
-    margin-bottom: 3em;
-    padding: 1em;
-}
+/** Fix duplicated comment field **/
 
-/* Fix modals */
-
-div#colorbox {
-    background: white;
-    border: 1px solid black;
-    padding: 1em;
-}
-
-div#cboxContent div.elgg-body {
-    overflow: auto;
-}
-
-div#cboxWrapper, div#cboxLoadedContent {
-    width: 100%;
-}
-
-/* Remove avatar cropping tool */
-
-div#avatar-croppingtool {
+div.elgg-inner > div#comments {
     display: none;
 }
 
-/* Fix user avatar display on profile page */
-
-p.mtm {
-    margin-bottom: 1em;
-}
-
-#current-user-avatar {
-    border-right: 0px !important;
-}
-
-/* Remove duplicate avatar in user administration */
-
-tr.elgg-item-user div.elgg-body div.media-left {
-    display: none;
-}
-
-/* Remove border and padding in user administration */
-
-tr.elgg-item-user div.elgg-body div.elgg-listing-summary-header {
-    border: 0px;
-    padding-top: 0px;
-}
-
-/* Fixes for the tinymce plugin */
+/** Fix tinyMCE view **/
 
 textarea.elgg-input-longtext {
-    display: none !important;
-}
-
-/* Fix plugin list */
-
-div#elgg-plugin-list {
-    overflow: auto;
-}
-
-/* Fix embed */
-
-.elgg-menu-longtext {
-    margin-top: 0px !important;
-}
-
-.elgg-pagination-after {
-    display: none !important;
-}
-
-/* Fix announcements */
-
-.elgg-message {
-    overflow: auto;
-}
-
-.elgg-message .elgg-listing-imprint {
-    color: white;
-}
-
-.elgg-message .elgg-menu-entity span {
-    color: white;
-}
-
-.elgg-message .elgg-listing-summary-header .elgg-image {
-    display: none;
-}
-
-.elgg-message strong {
-    color: white;
-}
-
-.site-announcement-attention {
-    background-color: red !important;
-}
-
-.site-announcement-general {
-    background-color: green !important;
+	display: none !important;
 }
 
 /** Fix menu for smaller widths **/
 
 @media screen and (min-width: 769px) {
     .elgg-page-topbar .nav-left {
-        width: 21em;
+        width: 15em;
         overflow: auto;
     }
+}
+
+/** Fix duplicate poll text **/
+
+.elgg-page-context-poll .elgg-listing-summary-body {
+        display: none;
+}
+
+/** Remove poll comments **/
+
+.elgg-page-context-poll .elgg-listing-summary-footer {
+        display: none;
+}
+
+/** Fix duplicate avatars in poll view **/
+
+.elgg-page-context-poll .elgg-listing-summary-header > .elgg-image.media-left {
+    display: none;
+}
+
+/** Add missing hidden class **/
+
+.hidden {
+    display: none !important;
 }

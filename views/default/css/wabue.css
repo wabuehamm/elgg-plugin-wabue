@@ -1,0 +1,11 @@
+/** CSS-Specialities for Waldbuehne Hamm **/
+
+/** Hide discussion summaries **/
+
+.elgg-page-context-discussion .elgg-list-container .elgg-listing-summary-content {
+    display: none;
+}
+
+.elgg-page-context-discussion .elgg-listing-summary-responses .elgg-list-container .elgg-listing-summary-content {
+    display: block;
+}

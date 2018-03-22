@@ -56,6 +56,7 @@ return [
 	'notification:subscriptions:publish:object:hjwall' => 'Neuer Pinnwand-Eintrag',
 	'notification:subscriptions:create:object:videolist_item' => 'Neues Video',
 	'notification:subscriptions:create:object:event_calendar' => 'Neuer Kalendereintrag',
+	'notification:subscriptions:create:object:poll' => 'Neue Umfrage',
 
 	'notification:instant:add_friend:user:default' => 'Jemand hat dich als Freund hinzugefügt',
 	'notification:instant:friend_request:user:default' => 'Jemand hat Dir eine Freundschaftsanfrage geschickt',
@@ -137,5 +138,39 @@ return [
 		Setze es auf 0, um automatische Updates auszuschalten.
 		Es kann sein, dass Du Deinen Cache aktualisieren muss, damit dies funktioniert.
 	',
+
+	/** hypeEmbed **/
+
+        'embed:posts' => 'Beiträge',
+        'embed:player' => 'Player',
+        'embed:assets' => 'Bereitgestellte Inhalte',
+
+        'embed:assets:help' => 'Für eine erhöhte Geschwindigkeit können Administratoren diese Inhalte zur Einbettung bereitstellen. Ein Bild muss dazu nach %s hochgeladen werden und die Caches gelöscht werden, damit das Bild hier angezeigt wird.',
+
+        'embed:ecml:error' => 'Der eingebettete Inhalt konnte nicht geladen werden, weil er entfernt wurde oder Du nicht genügend Berechtigungen besitzt, ihn anzusehen',
+
+        'embed:player:address' => 'Adresse des Inhalts',
+
+        'sort:object:filter:simpletype:all' => 'Alle Typen',
+        'sort:object:filter:simpletype:image' => 'Bilder',
+        'sort:object:filter:simpletype:general' => 'Andere',
+        'sort:object:filter:simpletype:document' => 'Dokumente',
+        'sort:object:filter:simpletype:video' => 'Videos',
+        'sort:object:filter:simpletype:audio' => 'Audio',
+
+        'item:object:embed_file' => 'Eingebettete Dateien',
+
+        'embed:upload_type' => 'Ablage',
+        'embed:upload_type:file' => 'Lege diese Datei unter meinen Dateien ab und mache sie durchsuchbar',
+        'embed:upload_type:embed_file' => 'Benutze diese Datei nur für die Einbettung in Beiträgen',
+
+        'admin:upgrades:embed:ckeditor_file' => 'CKEditor-Dateien migrieren',
+        'admin:upgrades:embed:ckeditor_file:description' => 'Die Dateien migrieren, die mit dem CKEditor hochgeladen wurden um sie einbettbar zu machen',
+
+        'embed:settings:river_preview' => 'Eine Player-Ansicht für diesen Eintrag in der Aktualisierungs-Ansicht hinzufügen',
+        'embed:settings:summary_preview' => 'Eine Player-Ansicht für diesen Eintrag in der Zusammenfassungs-Ansicht hinzufügen',
+
+        'embed:tab:file:empty' => 'Es wurden noch keine Dateien hochgeladen',
+        'embed:tab:posts:empty' => 'Es gibt noch keine Beiträge',
 
 ];
