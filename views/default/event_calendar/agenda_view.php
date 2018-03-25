@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Overridden agenda view to use a better date format
+ */
+
 $nav = elgg_view('navigation/pagination',[
 	'base_url' => $_SERVER['SCRIPT_NAME'].'/?'.$_SERVER['QUERY_STRING'],
 	'offset' => $vars['offset'],

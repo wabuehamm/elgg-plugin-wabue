@@ -1,2 +1,2 @@
 <?php
-echo elgg_require_js("js/fixEventCalendar");
+elgg_require_js("js/fixEventCalendar");

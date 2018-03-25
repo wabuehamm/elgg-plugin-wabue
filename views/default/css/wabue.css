@@ -9,3 +9,9 @@
 .elgg-page-context-discussion .elgg-listing-summary-responses .elgg-list-container .elgg-listing-summary-content {
     display: block;
 }
+
+/** Hide access level selection on profile fields **/
+
+.elgg-input-access {
+    display: none;
+}
