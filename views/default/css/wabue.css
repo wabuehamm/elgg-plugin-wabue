@@ -12,6 +12,6 @@
 
 /** Hide access level selection on profile fields **/
 
-.elgg-input-access {
+.elgg-page-context-profile_edit .elgg-input-access {
     display: none;
 }
