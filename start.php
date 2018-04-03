@@ -63,10 +63,10 @@ function add_eventcalendar_additional_views($hook, $type, $return, $params) {
     return $return;
 }
 
+/**
+ * Force access level for private fields to private
+ */
 function set_fields_accesslevel($event, $object_type, $object) {
-    // to fix prod:
-    // update elgg_metadata set access_id=0 where name_id in (select id from elgg_metastrings where string in ('street', 'zip', 'city', 'birthday'));
-    // update elgg_metadata set owner_guid=entity_guid where name_id in (select id from elgg_metastrings where string in ('street', 'zip', 'city', 'birthday'));
     if ($event == 'profileupdate' && $object_type == 'user') {
         foreach (array('street', 'zip', 'city', 'birthday') as $metadata) {
             $object->setMetadata($metadata, $object->getMetadata($metadata), '', false, $object->guid, ACCESS_PRIVATE);
