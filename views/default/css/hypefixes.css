@@ -39,6 +39,10 @@ td.event_calendar_agenda_title {
     overflow: auto;
 }
 
+.event_calendar_paged_date, .event_calendar_paged_time {
+    padding-right: 0.5em;
+}
+
 /** Event-calendar: Fix full view **/
 
 #calendar {
