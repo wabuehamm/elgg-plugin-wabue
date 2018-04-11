@@ -15,3 +15,9 @@
 .elgg-page-context-profile_edit .elgg-input-access {
     display: none;
 }
+
+/** Hide popular members tab **/
+
+a[title=Beliebt] {
+    display: none;
+}
