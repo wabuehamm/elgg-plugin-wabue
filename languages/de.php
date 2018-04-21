@@ -174,7 +174,7 @@ return [
     'embed:tab:file:empty' => 'Es wurden noch keine Dateien hochgeladen',
     'embed:tab:posts:empty' => 'Es gibt noch keine Beiträge',
 
-    /** content subscriptions **/
+    /** content subscriptions https://github.com/ColdTrick/content_subscriptions/pull/7 **/
 
     'content_subscriptions:subscribe' => "Abonnieren",
     'content_subscriptions:unsubscribe' => "Abbestellen",
