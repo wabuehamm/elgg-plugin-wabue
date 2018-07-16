@@ -93,3 +93,9 @@ textarea.elgg-input-longtext {
 .elgg-item.hidden {
     display: none !important;
 }
+
+/** Fix multiselects **/
+button.ui-multiselect {
+    padding: 1em;
+    line-height: 2em;
+}

@@ -205,5 +205,7 @@ Schaue es Dir an und kommentiere selbst:
     'content_subscriptions:action:subscribe:success:subscribe' => "Du hast diesen Inhalt erfolgreich abonniert",
     'content_subscriptions:action:subscribe:success:unsubscribe' => "Das Abonnement wurde erfolgreich abbestellt",
 
+    // Play applications
+    'wabue:play' => 'Stück'
 
 ];
