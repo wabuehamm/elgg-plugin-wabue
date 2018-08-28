@@ -206,6 +206,11 @@ Schaue es Dir an und kommentiere selbst:
     'content_subscriptions:action:subscribe:success:unsubscribe' => "Das Abonnement wurde erfolgreich abbestellt",
 
     // Play applications
-    'wabue:play' => 'Stück'
+    'wabue:play' => 'Stück',
+
+    // Overridden event calender
+
+    'event_calendar:region_label' => 'Art',
+    'event_calendar:region_filter_by_label' => 'Nach Art filtern',
 
 ];
