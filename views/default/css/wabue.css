@@ -2,41 +2,78 @@
 
 /** Hide discussion summaries **/
 
-.elgg-page-context-discussion .elgg-list-container .elgg-listing-summary-content {
-    display: none;
+.elgg-page-context-discussion
+  .elgg-list-container
+  .elgg-listing-summary-content {
+  display: none;
 }
 
-.elgg-page-context-discussion .elgg-listing-summary-responses .elgg-list-container .elgg-listing-summary-content {
-    display: block;
+.elgg-page-context-discussion
+  .elgg-listing-summary-responses
+  .elgg-list-container
+  .elgg-listing-summary-content {
+  display: block;
 }
 
 /** Hide access level selection on profile fields **/
 
 .elgg-page-context-profile_edit .elgg-input-access {
-    display: none;
+  display: none;
 }
 
 /** Hide popular members tab **/
 
-a[title=Beliebt] {
-    display: none;
+a[title="Beliebt"] {
+  display: none;
 }
 
-
-span.elgg-listing-access {
+@media screen and (max-width: 768px) {
+  span.elgg-listing-access {
     display: none;
-}
+  }
 
-.elgg-listing-summary-metadata.level {
+  .elgg-listing-summary-metadata.level {
     margin: 0;
-    text-align:  right;
+    text-align: right;
+  }
+
+  .elgg-listing-summary-responses {
+    font-size: 11px;
+  }
+
+  .hero-body .elgg-image.media-left {
+    display: none;
+  }
+
+  .elgg-page-context-profile .hero-body .elgg-image.media-left {
+    display: block;
+  }
+
+  .elgg-listing-summary-body {
+    display: block;
+  }
+
+  .hero-body {
+    padding: 1rem 1.5rem;
+  }
+
+  .level-left + .level-right {
+    margin-top: 0.5rem;
+  }
+
+  .elgg-listing-summary-responses {
+    font-size: 11pt;
+    margin-top: 1em;
+  }
+
+  .elgg-subtext {
+    font-size: 1em;
+  }
+
+  .elgg-menu-entity,
+  .elgg-menu-annotation,
+  .elgg-menu-river,
+  .elgg-menu-entity-social {
+    font-size: 1em;
+  }
 }
-
-.elgg-listing-summary-responses {font-size: 11px;}
-
-.elgg-image.media-left {
-    /* display: none; */
-    /* float: left; */
-}
-
-.elgg-listing-summary-body {display: block;}
