@@ -21,3 +21,22 @@
 a[title=Beliebt] {
     display: none;
 }
+
+
+span.elgg-listing-access {
+    display: none;
+}
+
+.elgg-listing-summary-metadata.level {
+    margin: 0;
+    text-align:  right;
+}
+
+.elgg-listing-summary-responses {font-size: 11px;}
+
+.elgg-image.media-left {
+    /* display: none; */
+    /* float: left; */
+}
+
+.elgg-listing-summary-body {display: block;}
