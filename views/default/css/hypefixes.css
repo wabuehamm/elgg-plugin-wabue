@@ -1,101 +1,112 @@
 /* Add padding, especially for mobile view */
 
 div.elgg-layout-content {
-    padding: 1em;
+  padding: 1em;
 }
 
 /* Remove duplicate avatar in user administration */
 
 tr.elgg-item-user div.elgg-body div.media-left {
-    display: none;
+  display: none;
 }
 
 /* Fix event calendar navigation widget */
 
 div.event_navigator {
-    float: none !important;
-    margin-bottom: 3em;
-    padding: 1em;
+  float: none !important;
+  margin-bottom: 3em;
+  padding: 1em;
 }
 
 /** Event-calendar: Fix agenda view **/
 
 div#event_list {
-    float: none !important;
-    max-width: none;
+  float: none !important;
+  max-width: none;
 }
 
 td.event_calendar_agenda_time {
-    min-width: 7em;
+  min-width: 7em;
 }
 
 td.event_calendar_agenda_title {
-    width: 60% !important;
+  width: 60% !important;
 }
 
 /** Event-calendar: Fix list view **/
 
 .event_calendar_paged_header_section {
-    overflow: auto;
+  overflow: auto;
 }
 
-.event_calendar_paged_date, .event_calendar_paged_time {
-    padding-right: 0.5em;
+.event_calendar_paged_date,
+.event_calendar_paged_time {
+  padding-right: 0.5em;
 }
 
 /** Event-calendar: Fix full view **/
 
 #calendar {
-    overflow: auto;
+  overflow: auto;
 }
 
 /** Fix duplicated comment field **/
 
 div.elgg-inner > div#comments {
-    display: none;
+  display: none;
 }
 
 /** Fix tinyMCE view **/
 
 textarea.elgg-input-longtext {
-	display: none !important;
+  display: none !important;
 }
 
 /** Fix menu for smaller widths **/
 
 @media screen and (min-width: 769px) {
-    .elgg-page-topbar .nav-left {
-        width: 15em;
-        overflow: auto;
-    }
+  .elgg-page-topbar .nav-left {
+    width: 15em;
+    overflow: auto;
+  }
 }
 
 /** Fix duplicate poll text **/
 
 .elgg-page-context-poll .elgg-listing-summary-body {
-        display: none;
+  display: none;
 }
 
 /** Remove poll comments **/
 
 .elgg-page-context-poll .elgg-listing-summary-footer {
-        display: none;
+  display: none;
 }
 
 /** Fix duplicate avatars in poll view **/
 
 .elgg-page-context-poll .elgg-listing-summary-header > .elgg-image.media-left {
-    display: none;
+  display: none;
 }
 
 /** Add missing hidden class **/
 
 .elgg-item.hidden {
-    display: none !important;
+  display: none !important;
 }
 
 /** Fix multiselects **/
 button.ui-multiselect {
-    padding: 1em;
-    line-height: 2em;
+  padding: 1em;
+  line-height: 2em;
+}
+
+/** Move system messages out of the way on mobile **/
+@media screen and (max-width: 768px) {
+  .elgg-message {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 }
