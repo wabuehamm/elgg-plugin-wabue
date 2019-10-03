@@ -21,9 +21,6 @@ $play_application_fields = [
 $private_fields = array_merge($play_application_fields, ['street', 'zip', 'city', 'birthday', 'common']);
 
 function wabue_init() {
-	// Register HypeUI CSS fixes
-	elgg_extend_view('elements/layout.css', 'css/hypefixes');
-
     // Register Wabue CSS modifications
     elgg_extend_view('elements/layout.css', 'css/wabue');
 
@@ -32,9 +29,6 @@ function wabue_init() {
 
 	// Register E-Mail address to profile view
 	elgg_extend_view('profile/details', 'profile/email');
-
-	// Move date picker to sidebar
-    elgg_extend_view('event_calendar/agenda_view', 'event_calendar/agenda_view_fix', 450);
 
     // Disable edit on profile view
     elgg_extend_view('resources/profile/edit', 'profile/edit', 450);
@@ -45,8 +39,8 @@ function wabue_init() {
 	// override register action to allow multiple mails
 	elgg_register_action("register", __DIR__ . "/actions/register.php");
 
-	// Add additional views to event calendar
-    elgg_register_plugin_hook_handler('register', 'menu:title', 'add_eventcalendar_additional_views');
+	// Add region select to event calendar sidebar
+    elgg_extend_view('event_calendar/sidebar', 'event_calendar/sidebar_region_select', 450);
 
     // Set private access level on defined fields
     elgg_register_event_handler('profileupdate', 'user', 'set_fields_accesslevel');
@@ -66,25 +60,6 @@ function fixSearchMenuItem($hook, $type, $value, $params) {
 		}
 	}
 	return $value;
-}
-
-/**
- * Add additional views to event calendar title menu
- */
-function add_eventcalendar_additional_views($hook, $type, $return, $params) {
-    if(!elgg_in_context("event_calendar")) {
-        return $return;
-    }
-    $paged_view = new ElggMenuItem('format_paged', elgg_echo('event_calendar:settings:paged'), elgg_get_site_url() . 'event_calendar/list/?format=paged');
-    $paged_view->setLinkClass('elgg-button elgg-button-action');
-    $return[] = $paged_view;
-    $agenda_view = new ElggMenuItem('format_agenda', elgg_echo('event_calendar:settings:agenda'), elgg_get_site_url() . 'event_calendar/list/?format=agenda');
-    $agenda_view->setLinkClass('elgg-button elgg-button-action');
-    $return[] = $agenda_view;
-    $full_view = new ElggMenuItem('format_full', elgg_echo('event_calendar:settings:full'), elgg_get_site_url() . 'event_calendar/list/?format=full');
-    $full_view->setLinkClass('elgg-button elgg-button-action');
-    $return[] = $full_view;
-    return $return;
 }
 
 /**
