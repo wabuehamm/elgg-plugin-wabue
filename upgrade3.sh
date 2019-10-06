@@ -49,11 +49,11 @@ echo "Adding additional mods"
 # ckeditor extended
 wget "https://elgg.org/plugins/download/2918098" && unzip 2918098 && rm 2918098
 
-# event calendar
-wget "https://elgg.org/plugins/download/2897144" && unzip 2897144 && rm 2897144
-
 # login as
 wget "https://elgg.org/plugins/download/2360972" && unzip 2360972 && rm 2360972
+
+# event calendar rc for elgg 3
+git clone -b issue-14 https://github.com/wabuehamm/event_calendar.git
 
 echo "Starting upgrade"
 
