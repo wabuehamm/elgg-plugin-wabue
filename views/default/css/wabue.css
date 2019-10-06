@@ -2,15 +2,7 @@
 
 /** Hide discussion summaries **/
 
-.elgg-page-context-discussion
-  .elgg-list-container
-  .elgg-listing-summary-content {
-  display: none;
-}
-
-.elgg-page-context-discussion
-  .elgg-listing-summary-responses
-  .elgg-list-container
+.elgg-item-object-discussion
   .elgg-listing-summary-content {
   display: block;
 }
@@ -23,7 +15,7 @@
 
 /** Hide popular members tab **/
 
-a[title="Beliebt"] {
+li[data-menu-item="popular"] {
   display: none;
 }
 
