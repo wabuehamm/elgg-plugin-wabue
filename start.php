@@ -24,6 +24,9 @@ function wabue_init() {
     // Register Wabue CSS modifications
     elgg_extend_view('elements/layout.css', 'css/wabue');
 
+    // Walled Garden CSS extensions
+    elgg_extend_view('walled_garden.css', 'walled_garden_title.css', 450);
+
     // hide irrelevant fields from event editor
 	elgg_extend_view('resources/event_calendar/edit', 'event_calendar/edit', 450);
 
