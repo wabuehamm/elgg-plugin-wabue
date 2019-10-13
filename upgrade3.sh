@@ -22,6 +22,7 @@ rm -rf event_calendar
 rm -rf hypeNotifications
 rm -rf hypeEmbed
 rm -rf hypeLists
+rm -rf wabue
 
 echo "Updating supported mods"
 
@@ -52,6 +53,9 @@ wget "https://elgg.org/plugins/download/2918098" && unzip 2918098 && rm 2918098
 
 # event calendar rc for elgg 3
 git clone -b issue-14 https://github.com/wabuehamm/event_calendar.git
+
+# wabue rc for elgg 3
+git clone -b elggv3 https://github.com/wabuehamm/elgg-plugin-wabue.git wabue
 
 echo "Starting upgrade"
 
