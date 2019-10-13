@@ -9,7 +9,7 @@
 
 /** Hide access level selection on profile fields **/
 
-.elgg-page-context-profile_edit .elgg-input-access {
+.elgg-form-profile-edit .elgg-input-access {
   display: none;
 }
 
@@ -17,55 +17,4 @@
 
 li[data-menu-item="popular"] {
   display: none;
-}
-
-@media screen and (max-width: 768px) {
-  span.elgg-listing-access {
-    display: none;
-  }
-
-  .elgg-listing-summary-metadata.level {
-    margin: 0;
-    text-align: right;
-  }
-
-  .elgg-listing-summary-responses {
-    font-size: 11px;
-  }
-
-  .hero-body .elgg-image.media-left {
-    display: none;
-  }
-
-  .elgg-page-context-profile .hero-body .elgg-image.media-left {
-    display: block;
-  }
-
-  .elgg-listing-summary-body {
-    display: block;
-  }
-
-  .hero-body {
-    padding: 1rem 1.5rem;
-  }
-
-  .level-left + .level-right {
-    margin-top: 0.5rem;
-  }
-
-  .elgg-listing-summary-responses {
-    font-size: 11pt;
-    margin-top: 1em;
-  }
-
-  .elgg-subtext {
-    font-size: 1em;
-  }
-
-  .elgg-menu-entity,
-  .elgg-menu-annotation,
-  .elgg-menu-river,
-  .elgg-menu-entity-social {
-    font-size: 1em;
-  }
 }
