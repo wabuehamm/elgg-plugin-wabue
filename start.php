@@ -33,6 +33,9 @@ function wabue_init() {
 	// Register E-Mail address to profile view
 	elgg_extend_view('profile/details', 'profile/email');
 
+    // Show extra fields automatically on useradd
+	elgg_extend_view('forms/useradd', 'forms/useradd_profile_fix', 999);
+
     // Disable edit on profile view
     elgg_extend_view('resources/profile/edit', 'profile/edit', 450);
 
@@ -73,7 +76,7 @@ function set_fields_accesslevel($event, $object_type, $object) {
 
     if ($event == 'profileupdate' && $object_type == 'user') {
         foreach ($private_fields as $metadata) {
-            $object->setMetadata($metadata, $object->getMetadata($metadata), '', false, $object->guid, ACCESS_PRIVATE);
+            $object->setProfileData($metadata, $object->getProfileData($metadata), ACCESS_PRIVATE);
         }
     }
     return true;
