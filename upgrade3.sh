@@ -32,7 +32,7 @@ rm -rf elgg_update_services && wget "https://elgg.org/plugins/download/2917092" 
 rm -rf favicon_override && wget "https://elgg.org/plugins/download/2915643" && unzip 2915643 && rm 2915643
 rm -rf menu_builder && wget "https://elgg.org/plugins/download/2918200" && unzip 2918200 && rm 2918200
 rm -rf poll && wget "https://github.com/ColdTrick/poll/releases/download/v4.2/poll_v4.2.zip" && unzip poll_v4.2.zip && rm poll_v4.2.zip
-rm -rf profile_manager && wget "https://elgg.org/plugins/download/2918295" && unzip 2918295 && rm 2918295
+rm -rf profile_manager && wget "https://github.com/ColdTrick/profile_manager/releases/download/v15.0/profile_manager_v15.0.zip" && unzip profile_manager_v15.0.zip && rm profile_manager_v15.0.zip
 rm -rf site_announcements && wget "https://elgg.org/plugins/download/2922421" && unzip 2922421 && rm 2922421
 rm -rf login_as && wget "https://github.com/Elgg/login_as/archive/2.0.0.zip" && unzip 2.0.0.zip && mv login_as-2.0.0/ login_as && rm 2.0.0.zip
 
