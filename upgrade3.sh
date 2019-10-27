@@ -57,6 +57,10 @@ git clone -b issue-14 https://github.com/wabuehamm/event_calendar.git
 # wabue rc for elgg 3
 git clone -b elggv3 https://github.com/wabuehamm/elgg-plugin-wabue.git wabue
 
+# Advanced comments
+
+wget "https://github.com/ColdTrick/advanced_comments/releases/download/v5.0/advanced_comments_v5.0.zip" && unzip advanced_comments_v5.0.zip && rm advanced_comments_v5.0.zip
+
 echo "Starting upgrade"
 
 curl -k -f https://web:8443/upgrade.php
