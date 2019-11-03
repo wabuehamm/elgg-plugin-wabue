@@ -9,5 +9,12 @@ return [
             'subtype' => 'embed_file',
             'class' => \ElggFile::class
         ]
+    ],
+    'hooks' => [
+        'commands' => [
+            'cli' => [
+                'add_cli_commands' => []
+            ]
+        ]
     ]
 ];

@@ -120,5 +120,10 @@ function wabue_page_handler(array $segments) {
     }
 }
 
+function add_cli_commands($hook, $type, $return) {
+    $return[] = Wabue\PrioritizeCommand::class;
+    return $return;
+}
+
 elgg_register_event_handler('init', 'system', 'wabue_init');
 
