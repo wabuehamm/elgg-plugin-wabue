@@ -4,9 +4,11 @@ namespace Wabue;
 
 class PrioritizeCommand extends \Elgg\Cli\Command {
 
-    public function __construct() {
-        parent::__construct('wabue:prioritize');
+    protected static $defaultName = 'wabue:prioritize';
+
+    protected function configure() {
         $this->setDescription('Prioritize the wabue plugin at the last position');
+        $this->setHelp('Because we\'re overwriting most stuff here, this plugin needs to be last.');
     }
 
     protected function command() {

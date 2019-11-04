@@ -4,9 +4,11 @@ namespace Wabue;
 
 class ConfigurePluginsCommand extends \Elgg\Cli\Command {
 
-    public function __construct() {
-        parent::__construct('wabue:configure');
+    protected static $defaultName = 'wabue:configure';
+
+    protected function configure() {
         $this->setDescription('Configure the installed plugins to the default settings');
+        $this->setHelp('This command configures several options of the required plugins');
     }
 
     protected function command() {
