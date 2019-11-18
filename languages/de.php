@@ -60,4 +60,90 @@ Schaue es Dir an und kommentiere selbst:
 	'advanced_comments:settings:allow_group_comments' => "Nicht-Mitgliedern einer Gruppe erlauben, etwas in der Gruppe zu kommentieren",
 	'advanced_comments:settings:allow_group_comments:help' => "Wenn ein Benutzer den Inhalt einer Gruppe, von der er nicht Mitglied ist, sehen kann, darf er kommentieren.",
 
+    // translation hotfix for engine
+
+    'email:from' => 'Von',
+	'email:to' => 'An',
+	'email:subject' => 'Betreff',
+	'email:body' => 'Email-Text',
+
+	'email:settings' => "Email",
+	'email:address:label' => "Email-Adresse",
+	'email:address:help:confirm' => "E-Mailadressänderungen nach '%s' steht aus. Bitte überprüfe Deinen Posteingang für mehr Informationen.",
+	'email:address:password' => "Passwort",
+	'email:address:password:help' => "Für die Änderung Deiner Email-Adresse ist die Eingabe Deines derzeitigen Passworts notwendig.",
+
+	'email:save:success' => "Die neue Email-Adresse wurde gespeichert. Eine Verifizierungs-Email wurde versandt.",
+	'email:save:fail' => "Die neue Email-Adresse konnte nicht gespeichert werden.",
+	'email:save:fail:password' => "Das eingegebene Passwort ist nicht gleich Deinem derzeitigen Passwort. Daher kann Deine neue Email-Adresse nicht gespeichert werden.",
+
+	'friend:newfriend:subject' => "Du bist nun mit %s befreundet!",
+	'friend:newfriend:body' => "Du bist nun mit %s befreundet!
+
+Um ihr/sein Profil aufzurufen, folge diesem Link:
+
+%s",
+
+	'email:changepassword:subject' => "Änderung des Passworts!",
+	'email:changepassword:body' => "Hallo %s,
+
+Dein Passwort wurde geändert.",
+
+	'email:resetpassword:subject' => "Zurücksetzung des Passworts!",
+	'email:resetpassword:body' => "Hallo %s,
+
+Dein Passwort wurde zurückgesetzt. Dein neues Passwort ist: %s",
+
+	'email:changereq:subject' => "Verifizierung der Änderung Deines Passworts.",
+	'email:changereq:body' => "Hallo %s,
+
+es wurde eine Änderung des Passworts Deines Accounts angefordert (von der IP-Adresse %s).
+
+Falls Du die Änderung des Passworts angefordert hast, klicke bitte auf den folgenden Link, um dies zu bestätigen:
+
+%s
+
+Andernfalls ignoriere bitte diese Email.",
+	
+	'account:email:request:success' => "Deine neue E-Mailadresse muss zunächst bestätigt werden. Bitte überprüfe den Posteingang der Adresse '%s' für weitere Informationen.",
+	'email:request:email:subject' => "Bitte bestätige Deine E-Mailadress",
+	'email:request:email:body' => "Hallo %s,
+
+Du hast eine Änderung Deiner E-Mailadresse auf '%s' angefordert.
+Wenn Du diese Änderung nicht angefordert hast, kannst Du diese Mail ignorieren.
+
+Um Deine E-Mailadressänderung zu bestätigen, klicke bitte auf diesen Link:
+%s
+
+Dieser Link ist eine Stunde gültig.",
+	
+	'account:email:request:error:no_new_email' => "Keine ausstehenden E-Mailadressänderungen.",
+	
+	'email:confirm:email:old:subject' => "Deine E-Mailadresse wurde geändert.",
+	'email:confirm:email:old:body' => "Hi %s,
+
+Deine E-Mailadresse für '%s' wurde geändert.
+Von nun an erhältst Du Benachrichtigungen an '%s'.
+
+Wenn Du das nicht angefordert hast, kontaktiere bitte Deinen Administrator.
+%s",
+	
+	'email:confirm:email:new:subject' => "Deine E-Mailadresse wurde geändert.",
+	'email:confirm:email:new:body' => "Hi ,
+
+Deine E-Mailadresse für '%s' wurde geändert.
+Von nun an erhältst Du Benachrichtigungen an '%s'.
+
+Wenn Du das nicht angefordert hast, kontaktiere bitte Deinen Administrator.
+%s",
+
+	'account:email:admin:validation_notification' => "Benachrichtige mich, wenn es Benutzer gibt, die durch einen Administrator überprüft werden müssen",
+	'account:email:admin:validation_notification:help' => "Aufgrund der Site-Einstellungen, müssen neuregistrierte Benutzer von einem Administrator manuell überprüft werden. Mit dieser Einstellung kannst Du Benachrichtigungen über ausstehende Überprüfungen abschalten.",
+	
+	'account:validation:pending:title' => "",
+	'account:validation:pending:content' => "",
+	
+	'account:notification:validation:subject' => "",
+	'account:notification:validation:body' => "",
+
 ];
