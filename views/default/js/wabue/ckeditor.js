@@ -26,6 +26,7 @@ define(function(require) {
                 returnValue.extraPlugins = []
             }
             returnValue.extraPlugins.push('emoji', 'toc')
+            returnValue.removeButtons = 'Source'
             return returnValue
         }
     }
