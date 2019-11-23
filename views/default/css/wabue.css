@@ -18,3 +18,12 @@
 li[data-menu-item="popular"] {
   display: none;
 }
+
+/** Better figures **/
+
+figure {
+  border: 1px solid lightgrey;
+}
+figcaption {
+  background-color: lightgrey;
+}
