@@ -30,6 +30,7 @@ define(function(require) {
             returnValue.extraPlugins = getStringArray(returnValue, 'extraPlugins').concat(['emoji', 'toc'])
             returnValue.removePlugins = ['image']
             returnValue.removeButtons = 'Source'
+            returnValue.format_tags = 'div'
             return returnValue
         }
     }
