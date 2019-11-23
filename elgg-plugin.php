@@ -16,5 +16,5 @@ return [
                 'add_cli_commands' => []
             ]
         ]
-    ]
+    ],
 ];

@@ -1,11 +1,11 @@
 define(function(require) {
-    var elgg = require("elgg");
-    var Plugin = require("elgg/Plugin");
-    var ckeditor = require('wabue/ckeditor');
+    let elgg = require("elgg");
+    let Plugin = require("elgg/Plugin");
+    let wabueCkeditor = require('wabueCkeditor');
 
     return new Plugin({
         init: function () {
-            elgg.register_hook_handler("config", "ckeditor", ckeditor.config);
+            elgg.register_hook_handler("config", "ckeditor", wabueCkeditor.config);
         }
     });
 });

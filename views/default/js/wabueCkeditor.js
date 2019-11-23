@@ -1,6 +1,16 @@
 define(function(require) {
+    function getStringArray(dataObject, dataKey) {
+        if (dataObject[dataKey]) {
+            if (typeof(dataObject[dataKey]) === 'string') {
+                return dataObject[dataKey].split(/,/)
+            }
+            return dataObject[dataKey]
+        } else {
+            return []
+        }
+    }
     return {
-        config: (hook, type, params, returnValue) => {
+        config: function (hook, type, params, returnValue) {
             returnValue.toolbar = null
             returnValue.toolbarGroups = [
                 { name: 'styles', groups: [ 'styles' ] },
@@ -16,16 +26,9 @@ define(function(require) {
                 { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
                 { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
                 { name: 'colors', groups: [ 'colors' ] },
-                { name: 'about', groups: [ 'about' ] }
             ]
-            if (returnValue.extraPlugins) {
-                if (typeof(returnValue.extraPlugins) === 'string') {
-                    returnValue.extraPlugins = [returnValue.extraPlugins]
-                } 
-            } else {
-                returnValue.extraPlugins = []
-            }
-            returnValue.extraPlugins.push('emoji', 'toc')
+            returnValue.extraPlugins = getStringArray(returnValue, 'extraPlugins').concat(['emoji', 'toc'])
+            returnValue.removePlugins = ['image']
             returnValue.removeButtons = 'Source'
             return returnValue
         }
