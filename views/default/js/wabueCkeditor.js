@@ -27,10 +27,9 @@ define(function(require) {
                 { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
                 { name: 'colors', groups: [ 'colors' ] },
             ]
-            returnValue.extraPlugins = getStringArray(returnValue, 'extraPlugins').concat(['emoji', 'toc'])
+            returnValue.extraPlugins = getStringArray(returnValue, 'extraPlugins').concat(['emoji', 'contents'])
             returnValue.removePlugins = ['image']
             returnValue.removeButtons = 'Source'
-            returnValue.format_tags = 'div'
             return returnValue
         }
     }
