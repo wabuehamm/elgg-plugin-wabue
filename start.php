@@ -51,9 +51,19 @@ function wabue_init() {
     // Set private access level on defined fields
     elgg_register_event_handler('profileupdate', 'user', 'set_fields_accesslevel');
 
+    elgg_register_plugin_hook_handler('config', 'htmlawed', 'addTocPluginHtmlAwedConfig');
+
     // Page handler
     elgg_register_page_handler('wabue', 'wabue_page_handler');
 
+}
+
+/**
+ * Add the required spec for HtmlAwed to allow toc
+ */
+function addTocPluginHtmlAwedConfig($hook, $type, $value, $params) {
+    $value['unique_ids'] = 0;
+    return $value;
 }
 
 /**
