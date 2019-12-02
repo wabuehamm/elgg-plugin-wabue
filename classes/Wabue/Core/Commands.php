@@ -6,9 +6,9 @@ class Commands
 {
     public static function registerCommands()
     {
-        $return[] = Wabue\PrioritizeCommand::class;
-        $return[] = Wabue\ConfigurePluginsCommand::class;
-        $return[] = Wabue\AnnouncementCommand::class;
+        $return[] = Wabue\Core\PrioritizeCommand::class;
+        $return[] = Wabue\Core\ConfigurePluginsCommand::class;
+        $return[] = Wabue\Core\AnnouncementCommand::class;
         return $return;
     }
 }

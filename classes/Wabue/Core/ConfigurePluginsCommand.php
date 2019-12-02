@@ -1,6 +1,6 @@
 <?php
 
-namespace Wabue;
+namespace Wabue\Core;
 
 class ConfigurePluginsCommand extends \Elgg\Cli\Command {
 

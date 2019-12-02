@@ -1,6 +1,6 @@
 <?php
 
-namespace Wabue;
+namespace Wabue\Core;
 
 use Symfony\Component\Console\Input\InputArgument;
 
