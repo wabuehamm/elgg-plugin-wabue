@@ -3,6 +3,7 @@
 # Fix to include images uploaded using hypeEmbed originally
 
 return [
+    'bootstrap' => Wabue\Core\Bootstrap::class,
     'entities' => [
         [
             'type' => 'object',
@@ -13,7 +14,7 @@ return [
     'hooks' => [
         'commands' => [
             'cli' => [
-                'add_cli_commands' => []
+                '\Wabue\Core\Commands::registerCommands' => []
             ]
         ]
     ],
