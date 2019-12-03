@@ -30,7 +30,7 @@ class Bootstrap extends DefaultPluginBootstrap
         return $value;
     }
 
-    public function boot()
+    public function init()
     {
         // Register Wabue CSS modifications
         elgg_extend_view('elements/layout.css', 'css/wabue');
@@ -56,6 +56,11 @@ class Bootstrap extends DefaultPluginBootstrap
         // Set private access level on defined fields
         elgg_register_event_handler('profileupdate', 'user', '\Wabue\Core\Bootstrap::set_fields_accesslevel');
 
+        // Set the right configuration required for the TOC plugin (https://github.com/Elgg/Elgg/issues/12934)
         elgg_register_plugin_hook_handler('config', 'htmlawed', '\Wabue\Core\Bootstrap::addTocPluginHtmlAwedConfig');
+
+        // Allow duplicate address on usersettings:save (https://github.com/Elgg/Elgg/issues/12936)
+        elgg_unregister_plugin_hook_handler('usersettings:save', 'user', '_elgg_set_user_email');
+        elgg_register_plugin_hook_handler('usersettings:save', 'user', '\Wabue\Core\UserSettings::save');
     }
 }
