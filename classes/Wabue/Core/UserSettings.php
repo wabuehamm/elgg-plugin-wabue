@@ -2,6 +2,9 @@
 
 namespace Wabue\Core;
 
+use ElggUser;
+use Elgg\Request;
+
 class UserSettings
 {
     /**
