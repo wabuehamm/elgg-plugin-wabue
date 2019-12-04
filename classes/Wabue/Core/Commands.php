@@ -4,11 +4,11 @@ namespace Wabue\Core;
 
 class Commands
 {
-    public static function registerCommands()
+    public static function registerCommands($hook, $type, $return)
     {
-        $return[] = Wabue\Core\PrioritizeCommand::class;
-        $return[] = Wabue\Core\ConfigurePluginsCommand::class;
-        $return[] = Wabue\Core\AnnouncementCommand::class;
+        $return[] = PrioritizeCommand::class;
+        $return[] = ConfigurePluginsCommand::class;
+        $return[] = AnnouncementCommand::class;
         return $return;
     }
 }
