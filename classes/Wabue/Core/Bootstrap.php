@@ -62,5 +62,14 @@ class Bootstrap extends DefaultPluginBootstrap
         // Allow duplicate address on usersettings:save (https://github.com/Elgg/Elgg/issues/12936)
         elgg_unregister_plugin_hook_handler('usersettings:save', 'user', '_elgg_set_user_email');
         elgg_register_plugin_hook_handler('usersettings:save', 'user', '\Wabue\Core\UserSettings::save');
+
+        // Add membership card menu item
+        elgg_register_menu_item('title', array(
+            'name' => 'membership',
+            'text' => elgg_echo('wabue:membership'),
+            'href' => '/wabue/membercard',
+            'link_class' => 'elgg-button elgg-button-action',
+            'icon' => 'address-card',
+        ));
     }
 }

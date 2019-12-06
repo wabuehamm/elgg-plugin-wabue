@@ -2,6 +2,10 @@
 
 return [
 
+	/** Wabue */
+
+	'wabue:membership' => 'Mitgliedsausweis',
+
     /** content subscriptions https://github.com/ColdTrick/content_subscriptions/pull/7 **/
 
     'content_subscriptions:subscribe' => "Abonnieren",

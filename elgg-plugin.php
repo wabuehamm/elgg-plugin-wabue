@@ -18,4 +18,10 @@ return [
             ]
         ]
     ],
+    'routes' => [
+        'wabue:membercard' => [
+            'path' => '/wabue/membercard',
+            'resource' => 'wabue/membercard',
+        ],
+    ],
 ];
