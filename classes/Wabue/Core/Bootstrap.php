@@ -30,6 +30,24 @@ class Bootstrap extends DefaultPluginBootstrap
         return $value;
     }
 
+    public static function profileMembershipItem(\Elgg\Hook $hook)
+    {
+        $user = $hook->getEntityParam();
+        $return = $hook->getValue();
+
+        if ($user instanceof \ElggUser && $user->canEdit()) {
+            $return[] = \ElggMenuItem::factory([
+                'name' => 'membership',
+                'text' => elgg_echo('wabue:membership'),
+                'href' => '/wabue/membercard',
+                'link_class' => 'elgg-button elgg-button-action',
+                'icon' => 'address-card',
+            ]);
+        }
+
+        return $return;
+    }
+
     public function init()
     {
         // Register Wabue CSS modifications
@@ -64,12 +82,6 @@ class Bootstrap extends DefaultPluginBootstrap
         elgg_register_plugin_hook_handler('usersettings:save', 'user', '\Wabue\Core\UserSettings::save');
 
         // Add membership card menu item
-        elgg_register_menu_item('title', array(
-            'name' => 'membership',
-            'text' => elgg_echo('wabue:membership'),
-            'href' => '/wabue/membercard',
-            'link_class' => 'elgg-button elgg-button-action',
-            'icon' => 'address-card',
-        ));
+        elgg_register_plugin_hook_handler('register', 'menu:title', '\Wabue\Core\Bootstrap::profileMembershipItem');
     }
 }
