@@ -74,7 +74,7 @@ $year = "2020";
         grid-column: 2;
         grid-row: 1;
         background-color: white;
-        background-image: url(https://web:8443/cache/0/default/graphics/membershipcard_logo.png);
+        background-image: url(<?php echo elgg_get_simplecache_url('graphics/membershipcard_logo.png'); ?>);
         background-repeat: no-repeat;
         background-position: bottom right;
         background-size: 17em;
