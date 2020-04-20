@@ -9,6 +9,7 @@ class Commands
         $return[] = PrioritizeCommand::class;
         $return[] = ConfigurePluginsCommand::class;
         $return[] = AnnouncementCommand::class;
+        $return[] = TestModeCommand::class;
         return $return;
     }
 }

@@ -44,16 +44,16 @@ Schaue es Dir an und kommentiere selbst:
     // advanced comments
 
     'advanced_comments' => "Advanced comments",
-	
+
 	'advanced_comments:header:order' => "Kommentarsortierung",
 	'advanced_comments:header:order:asc' => "Älteste zuerst",
 	'advanced_comments:header:order:desc' => "Neuste zuerst",
-	
+
 	'advanced_comments:header:limit' => "Maximale Anzahl",
 	'advanced_comments:header:auto_load' => "Automatisch laden",
-	
+
 	'advanced_comments:comment:logged_out' => "Das Kommentieren ist nur für angemeldete Nutzer erlaubt",
-	
+
 	'advanced_comments:settings:auto_load:help' => "Automatisch die nächsten Kommentare laden, wenn der Benutezr das Ende der Seite erreicht",
 	'advanced_comments:settings:user_preference' => "Dürfen Benutzer die Kommentareinstellungen verändern?",
 	'advanced_comments:settings:show_login_form' => "Das Anmeldeformular für nicht angemeldete Benutzer unter den Kommentaren anzeigen",
@@ -104,7 +104,7 @@ Falls Du die Änderung des Passworts angefordert hast, klicke bitte auf den folg
 %s
 
 Andernfalls ignoriere bitte diese Email.",
-	
+
 	'account:email:request:success' => "Deine neue E-Mailadresse muss zunächst bestätigt werden. Bitte überprüfe den Posteingang der Adresse '%s' für weitere Informationen.",
 	'email:request:email:subject' => "Bitte bestätige Deine E-Mailadress",
 	'email:request:email:body' => "Hallo %s,
@@ -116,9 +116,9 @@ Um Deine E-Mailadressänderung zu bestätigen, klicke bitte auf diesen Link:
 %s
 
 Dieser Link ist eine Stunde gültig.",
-	
+
 	'account:email:request:error:no_new_email' => "Keine ausstehenden E-Mailadressänderungen.",
-	
+
 	'email:confirm:email:old:subject' => "Deine E-Mailadresse wurde geändert.",
 	'email:confirm:email:old:body' => "Hi %s,
 
@@ -127,7 +127,7 @@ Von nun an erhältst Du Benachrichtigungen an '%s'.
 
 Wenn Du das nicht angefordert hast, kontaktiere bitte Deinen Administrator.
 %s",
-	
+
 	'email:confirm:email:new:subject' => "Deine E-Mailadresse wurde geändert.",
 	'email:confirm:email:new:body' => "Hi ,
 
@@ -139,11 +139,14 @@ Wenn Du das nicht angefordert hast, kontaktiere bitte Deinen Administrator.
 
 	'account:email:admin:validation_notification' => "Benachrichtige mich, wenn es Benutzer gibt, die durch einen Administrator überprüft werden müssen",
 	'account:email:admin:validation_notification:help' => "Aufgrund der Site-Einstellungen, müssen neuregistrierte Benutzer von einem Administrator manuell überprüft werden. Mit dieser Einstellung kannst Du Benachrichtigungen über ausstehende Überprüfungen abschalten.",
-	
+
 	'account:validation:pending:title' => "",
 	'account:validation:pending:content' => "",
-	
+
 	'account:notification:validation:subject' => "",
 	'account:notification:validation:body' => "",
+
+    'wabue:settings:testmode:label' => 'Test-Modus',
+    'wabue:settings:testmode:help' => 'Eher unsichere Erweiterungen aktivieren. Sollte nur angeschaltet werden, wenn das System sich im Testmodus befindet'
 
 ];
