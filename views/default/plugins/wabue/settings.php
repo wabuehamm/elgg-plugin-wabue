@@ -15,6 +15,7 @@ $params = [
     '#type' => 'select',
     '#label' => elgg_echo('wabue:settings:testmode:label'),
     '#help' => elgg_echo('wabue:settings:testmode:help') . ' ' . $helpsuffix,
+    'name' => 'params[testmode]',
     'value' => $testmode,
     'options_values' => [
         [
