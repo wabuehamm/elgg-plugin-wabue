@@ -3,6 +3,7 @@
 namespace Wabue\Core;
 
 use Elgg\DefaultPluginBootstrap;
+use ElggPlugin;
 
 class Bootstrap extends DefaultPluginBootstrap
 {
@@ -19,6 +20,13 @@ class Bootstrap extends DefaultPluginBootstrap
             }
         }
         return true;
+    }
+
+    public static function testmodeValid()
+    {
+        /** @var ElggPlugin[] $pluginList */
+        $pluginList = elgg_get_plugins('active');
+        return elgg_plugin_exists('filetransport') && elgg_is_active_plugin('filetransport') && $pluginList[count($pluginList) - 1]->getId() == 'filetransport';
     }
 
     /**

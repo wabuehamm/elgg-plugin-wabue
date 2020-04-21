@@ -1,11 +1,20 @@
 <?php
 
+use Wabue\Core\Bootstrap;
+
 $testmode = elgg_get_plugin_setting('testmode', 'wabue', 'off');
 
-echo elgg_view_field([
+$helpsuffix = '';
+$settingEnabled = true;
+if (!Bootstrap::testmodeValid()) {
+    $helpsuffix = elgg_echo('wabue:settings:testmode:disabled');
+    $settingEnabled = false;
+}
+
+$params = [
     '#type' => 'select',
     '#label' => elgg_echo('wabue:settings:testmode:label'),
-    '#help' => elgg_echo('wabue:settings:testmode:help'),
+    '#help' => elgg_echo('wabue:settings:testmode:help') . ' ' . $helpsuffix,
     'value' => $testmode,
     'options_values' => [
         [
@@ -17,5 +26,10 @@ echo elgg_view_field([
             'text' => elgg_echo('off')
         ]
     ]
-]);
+];
+if (!$settingEnabled) {
+    $params['disabled'] = 'disabled';
+}
+
+echo elgg_view_field($params);
 

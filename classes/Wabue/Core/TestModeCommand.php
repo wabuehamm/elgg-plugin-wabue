@@ -16,6 +16,10 @@ class TestModeCommand extends \Elgg\Cli\Command {
     }
 
     protected function command() {
+        if (!Bootstrap::testmodeValid()) {
+            echo 'Testmode can not be changed, because the filetransport module was not active or not the last active plugin.';
+            return 1;
+        }
         if ($this->option('testmode')) {
             $value = $this->option('testmode');
             elgg_set_plugin_setting('testmode', $value, 'wabue');

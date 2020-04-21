@@ -147,6 +147,7 @@ Wenn Du das nicht angefordert hast, kontaktiere bitte Deinen Administrator.
 	'account:notification:validation:body' => "",
 
     'wabue:settings:testmode:label' => 'Test-Modus',
-    'wabue:settings:testmode:help' => 'Eher unsichere Erweiterungen aktivieren. Sollte nur angeschaltet werden, wenn das System sich im Testmodus befindet'
+    'wabue:settings:testmode:help' => 'Eher unsichere Erweiterungen aktivieren. Sollte nur angeschaltet werden, wenn das System sich im Testmodus befindet',
+    'wabue:settings:testmode:disabled' => 'Der Test-Modus kann derzeit nicht aktiviert werden, da das filetransport-Modul ist nicht aktiv oder nicht am Ende der Pluginliste.'
 
 ];
