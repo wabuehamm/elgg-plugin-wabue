@@ -26,7 +26,8 @@ class Bootstrap extends DefaultPluginBootstrap
     {
         /** @var ElggPlugin[] $pluginList */
         $pluginList = elgg_get_plugins('active');
-        return elgg_plugin_exists('filetransport') && elgg_is_active_plugin('filetransport') && $pluginList[count($pluginList) - 1]->getId() == 'filetransport';
+        $correctPosition = $pluginList[count($pluginList) - 1]->getId() == 'filetransport' || ($pluginList[count($pluginList) - 1]->getId() == 'wabue' && $pluginList[count($pluginList) - 2]->getId() == 'filetransport');
+        return elgg_plugin_exists('filetransport') && elgg_is_active_plugin('filetransport') && $correctPosition;
     }
 
     /**
