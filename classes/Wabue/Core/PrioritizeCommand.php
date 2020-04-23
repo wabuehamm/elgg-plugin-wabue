@@ -12,6 +12,14 @@ class PrioritizeCommand extends \Elgg\Cli\Command {
     }
 
     protected function command() {
+        if (elgg_is_active_plugin('filetransport')) {
+            $iam = elgg_get_plugin_from_id('filetransport');
+            $maxPriority = _elgg_get_max_plugin_priority();
+
+            if ($iam->setPriority($maxPriority) == false) {
+                return 1;
+            }
+        }
         $iam = elgg_get_plugin_from_id('wabue');
         $maxPriority = _elgg_get_max_plugin_priority();
 
