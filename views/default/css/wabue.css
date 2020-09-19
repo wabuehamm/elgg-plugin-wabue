@@ -27,3 +27,12 @@ figure {
 figcaption {
   background-color: lightgrey;
 }
+
+/** Better integrate custom profile fields in the provile view **/
+#profile-details {
+  border: 0 !important;
+}
+
+.elgg-profile-fields {
+  padding: 0 !important;
+}
