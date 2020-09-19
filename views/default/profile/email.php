@@ -3,22 +3,29 @@ if (!elgg_is_admin_logged_in()) {
     // disable certain profile fields for non-admins
     echo elgg_require_js("js/fixProfileFields");
 }
-?>
-<div id="profile-email">
-<?php
-$user = elgg_get_page_owner_entity();
-if ($user->email == 'noreply@waldbuehne-heessen.de') {
-?>
-    <b>E-Mail:</b> noch keine Adresse angegeben
-<?php
-} else {
 
-?>
-<b>E-Mail:</b> <a href="mailto:<?php echo $user->email ?>"><?php echo $user->email ?></a>
-<?php
+/** @var ElggUser $user */
+$user = elgg_get_page_owner_entity();
+
+$content = '';
+
+if ($user->email == 'noreply@waldbuehne-heessen.de') {
+    $mail = elgg_echo('wabue:profile:noemail');
+} else {
+    $mail = $user->email;
 }
 
-?>
-</div>
+$content = elgg_view('object/elements/field', [
+    'label' => elgg_echo('wabue:profile:email'),
+    'value' => elgg_format_element('span', [], $mail),
+    'class' => 'group-profile-field',
+    'name' => 'mail',
+]);
+
+echo elgg_view_module(
+    'info',
+    elgg_echo('wabue:profile:email'),
+    $content
+);
 
 
