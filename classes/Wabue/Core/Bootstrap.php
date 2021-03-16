@@ -7,7 +7,7 @@ use ElggPlugin;
 
 class Bootstrap extends DefaultPluginBootstrap
 {
-    public static $private_fields = ['street', 'zip', 'city', 'birthday', 'common'];
+    public static $private_fields = ['street', 'zip', 'city', 'birthday', 'anniversary', 'common'];
 
     /**
      * Force access level for private fields to private
