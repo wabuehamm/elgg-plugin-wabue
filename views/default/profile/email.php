@@ -1,9 +1,4 @@
 <?php
-if (!elgg_is_admin_logged_in()) {
-    // disable certain profile fields for non-admins
-    echo elgg_require_js("js/fixProfileFields");
-}
-
 /** @var ElggUser $user */
 $user = elgg_get_page_owner_entity();
 
