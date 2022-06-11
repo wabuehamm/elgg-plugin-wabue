@@ -6,10 +6,14 @@ function fixProfile() {
 
     $('input[name="member_since"]').attr('disabled', 'disabled');
 
+    // disable Senior since
 
-    // disable Aussetzjahre
+    $('input[name="senior_since"]').attr('disabled', 'disabled');
 
-    $('input[name="away_years"]').attr('disabled', 'disabled');
+    // remove Aussetzjahre
+
+    $('label[for="profile-away_years"]').hide();
+    $('input[name="away_years"]').hide();
 
 }
 
