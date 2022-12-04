@@ -1,0 +1,21 @@
+{
+    "name": "wabuehamm/wabue",
+    "description": "Plugin for specific Elgg-modifications for Waldbuehne Heessen",
+    "type": "elgg-plugin",
+    "keywords": [
+        "elgg",
+        "plugin"
+    ],
+    "license": "MIT",
+    "support": {
+        "source": "https://github.com/wabuehamm/elgg-plugin-wabue",
+        "issues": "https://github.com/wabuehamm/elgg-plugin-wabue/issues"
+    },
+    "require": {
+        "composer/installers": "^1.0.8",
+        "phpoffice/phpspreadsheet": "1.25.2"
+    },
+    "conflict": {
+        "elgg/elgg": "<3.0.0"
+    }
+}

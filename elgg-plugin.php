@@ -2,6 +2,9 @@
 
 # Fix to include images uploaded using hypeEmbed originally
 
+use Elgg\Router\Middleware\Gatekeeper;
+use Wabue\Core\AppointmentGatekeeper;
+
 return [
     'bootstrap' => Wabue\Core\Bootstrap::class,
     'entities' => [
@@ -18,4 +21,22 @@ return [
             ]
         ]
     ],
+    'routes' => [
+        'view:uploadappointments' => [
+            'path' => '/wabue/appointments',
+            'resource' => 'wabue/appointments',
+            'middleware' => [
+                Gatekeeper::class,
+                AppointmentGatekeeper::class
+            ]
+        ],
+    ],
+    'settings' => [
+        'appointment_users' => ''
+    ],
+    'actions' => [
+        'wabue/appointment/import' => [
+            'access' => 'logged_in'
+        ]
+    ]
 ];

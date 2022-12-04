@@ -62,6 +62,9 @@ class Bootstrap extends DefaultPluginBootstrap
         // Add region select to event calendar sidebar
         elgg_extend_view('event_calendar/sidebar', 'event_calendar/sidebar_region_select', 450);
 
+        // Add "import from excel" as to the calendar navigation
+        elgg_extend_view('event_calendar/show_events', 'event_calendar/navigation_appointments_import', 450);
+
         // Set private access level on defined fields
         elgg_register_event_handler('profileupdate', 'user', '\Wabue\Core\Bootstrap::set_fields_accesslevel');
 
