@@ -1,7 +1,7 @@
 {
 	"name": "wabue",
 	"description": "Elgg plugin with basic UI modifications for the Waldbuehne Hamm member area",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"homepage": "https://waldbuehne-heessen.de",
 	"license": "expat",
 	"author": {
