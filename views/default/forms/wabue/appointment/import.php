@@ -5,9 +5,10 @@ use Wabue\Membership\Entities\Season;
 use Wabue\Membership\Tools;
 
 $errors = get_input('errors','');
+$events_imported = get_input('events_imported', 0);
 
 if (!empty($errors)) {
-    echo elgg_view_module('error', elgg_echo('wabue:appointment:import:error'), $errors);
+    echo elgg_view_message('error', $errors);
 }
 
 echo elgg_view_field([
@@ -16,6 +17,16 @@ echo elgg_view_field([
     '#help' => elgg_echo('wabue:appointment:import:file:help'),
     'name' => 'import',
     'required' => true,
+]);
+
+echo elgg_view_field([
+    '#type' => 'checkbox',
+    '#label' => elgg_echo('wabue:appointment:import:check:label'),
+    '#help' => elgg_echo('wabue:appointment:import:check:help'),
+    'name' => 'check',
+    'value' => 'yes',
+    'checked' => true,
+    'switch' => true
 ]);
 
 elgg_set_form_footer(

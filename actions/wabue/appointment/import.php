@@ -38,6 +38,7 @@ $valid_types = [
     "Abend",
 ];
 
+$check_only = get_input('check', 'yes') == 'yes';
 $file = elgg_get_uploaded_file('import');
 $spreadsheet = IOFactory::load($file);
 
@@ -63,6 +64,7 @@ function parse_input_date(string $value): ?array
     ];
 }
 $errors = [];
+$events_imported = 0;
 
 foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
     $current_user = elgg_get_logged_in_user_entity();
@@ -77,7 +79,7 @@ foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
         if (!$headersValid) {
             foreach ($headers as $index => $header) {
                 if (!($worksheet->getCellByColumnAndRow($index + 1, $row->getRowIndex())->getValue() == $header)) {
-                    $errors[] = "Worksheet " . $worksheet->getTitle() . "doesn't match header validation. Skipping";
+                    $errors[] = "Worksheet " . $worksheet->getTitle() . " doesn't match header validation. Skipping";
                     continue 3;
                 }
             }
@@ -148,7 +150,7 @@ foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
             $errors[] = "Did not catch all required event cells. Skipping row: $row_text";
             continue;
         }
-        elgg_call(ELGG_IGNORE_ACCESS, function () use ($value, $fromDate, $toDate, $organizer, $event, $current_user, $type) {
+        elgg_call(ELGG_IGNORE_ACCESS, function () use ($value, $fromDate, $toDate, $organizer, $event, $current_user, $type, $check_only, $events_imported) {
             set_input('schedule_type', 'fixed');
             set_input('start_date', $fromDate['date']);
             set_input('end_date', $toDate['date']);
@@ -161,24 +163,26 @@ foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
             set_input('description', $event['Wer']);
             set_input('venue', $event['Wo']);
             set_input('region', $type);
-            $session = elgg()->session;
-            $session->setLoggedInUser($organizer);
-            event_calendar_set_event_from_form(0, 0);
-            $session->setLoggedInUser($current_user);
+            if (!$check_only) {
+                $session = elgg()->session;
+                $session->setLoggedInUser($organizer);
+                event_calendar_set_event_from_form(0, 0);
+                $session->setLoggedInUser($current_user);
+            }
         });
-
+        $events_imported++;
     }
 }
 
 if (count($errors) > 0) {
     return elgg_error_response(
-        elgg_echo('wabue:appointment:import:error'),
-        elgg_generate_url('view:uploadappointments', ['errors' => substr(join('<br />', $errors),0, 2000)])
+        elgg_echo('wabue:appointment:import:error', [$events_imported]),
+        elgg_generate_url('view:uploadappointments', ['errors' => substr(join('<br />', $errors),0, 2000), 'events_imported' => $events_imported])
     );
 } else {
     return elgg_ok_response(
         '',
-        elgg_echo('wabue:appointment:import:successful'),
+        elgg_echo('wabue:appointment:import:successful', [$events_imported]),
         elgg_generate_url('view:uploadappointments')
     );
 }
