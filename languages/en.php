@@ -17,4 +17,6 @@ return [
 
     'wabue:appointment:import:check:label' => 'Only check import',
     'wabue:appointment:import:check:help' => "Don't import events, only validate import",
+    'senior' => 'Senior',
+    'deceased' => 'Deceased',
 ];

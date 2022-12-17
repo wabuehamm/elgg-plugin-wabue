@@ -165,4 +165,7 @@ Wenn Du das nicht angefordert hast, kontaktiere bitte Deinen Administrator.
 
     'wabue:appointment:import:check:label' => 'Nur prüfen',
     'wabue:appointment:import:check:help' => 'Termine nicht importieren, Importdatei nur prüfen',
+
+    'senior' => 'In Altersruhe',
+    'deceased' => 'Verstorben',
 ];
