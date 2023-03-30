@@ -11,13 +11,12 @@ class Bootstrap extends DefaultPluginBootstrap
 
     /**
      * Force access level for private fields to private
+     * @param $object \ElggMetadata
      */
     public static function set_fields_accesslevel($event, $object_type, $object)
     {
-        if ($event == 'profileupdate' && $object_type == 'user') {
-            foreach (Bootstrap::$private_fields as $metadata) {
-                $object->setProfileData($metadata, $object->getProfileData($metadata), ACCESS_PRIVATE);
-            }
+        foreach (Bootstrap::$private_fields as $metadata) {
+            $object->setProfileData($metadata, $object->getProfileData($metadata), ACCESS_PRIVATE);
         }
         return true;
     }
@@ -67,6 +66,7 @@ class Bootstrap extends DefaultPluginBootstrap
 
         // Set private access level on defined fields
         elgg_register_event_handler('profileupdate', 'user', '\Wabue\Core\Bootstrap::set_fields_accesslevel');
+        elgg_register_event_handler('create', 'user', '\Wabue\Core\Bootstrap::set_fields_accesslevel', 999);
 
         // Set the right configuration required for the TOC plugin (https://github.com/Elgg/Elgg/issues/12934)
         elgg_register_plugin_hook_handler('config', 'htmlawed', '\Wabue\Core\Bootstrap::addTocPluginHtmlAwedConfig');
