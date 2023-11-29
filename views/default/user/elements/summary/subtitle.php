@@ -22,10 +22,10 @@ if (!$entity->isBanned()) {
 }
 
 $senior_since = $entity->getProfileData('senior_since');
-if ($senior_since && (intval($senior_since)) <= intval(strftime('%Y'))) {
-    $subtitle = elgg_echo('senior');
-} elseif ($entity->getProfileData('deathday')) {
+if ($entity->getProfileData('deathday')) {
     $subtitle = elgg_echo('deceased');
+} elseif ($senior_since && (intval($senior_since)) <= intval(strftime('%Y'))) {
+    $subtitle = elgg_echo('senior');
 }
 
 if (elgg_is_empty($subtitle)) {
