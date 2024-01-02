@@ -168,4 +168,57 @@ Wenn Du das nicht angefordert hast, kontaktiere bitte Deinen Administrator.
 
     'senior' => 'In Altersruhe',
     'deceased' => 'Verstorben',
+
+    // Discussions-Modifications
+
+    'add:object:discussion' => 'Beitrag hinzufügen',
+    'edit:object:discussion' => 'Beitrag bearbeiten',
+
+    'discussion:latest' => 'Neueste Beiträge',
+    'collection:object:discussion:group' => 'Gruppen-Beiträge',
+    'discussion:none' => 'Es gibt noch keine Beiträge.',
+
+    'discussion:topic:created' => 'Der Beitrag wurde hinzugefügt.',
+    'discussion:topic:updated' => 'Der Beitrag wurde aktualisiert.',
+    'entity:delete:object:discussion:success' => 'Der Beitrag wurde gelöscht.',
+
+    'discussion:topic:notfound' => 'Der gewünschte Beitrag wurde leider nicht gefunden.',
+    'discussion:error:notsaved' => 'Der Beitrag konnte nicht gespeichert werden.',
+    'discussion:error:missing' => 'Es müssen sowohl der Titel als auch der Textinhalt des Beitrags ausgefüllt werden.',
+
+    'river:object:discussion:create' => '%s hat den Beitrag %s hinzugefügt',
+    'river:object:discussion:comment' => '%s schrieb eine Antwort im Beitrag %s',
+
+    'discussion:topic:notify:summary' => 'Neuer Beitrag namens %s',
+    'discussion:topic:notify:subject' => 'Neuer Beitrag: %s',
+    'discussion:topic:notify:body' =>
+        '%s hat den neuen Beitrag "%s" gestartet:
+
+%s
+
+Schau Dir den neuen Beitrag an und antworte darauf:
+%s
+',
+
+    'discussion:comment:notify:summary' => 'Neue Antwort im Beitrag: %s',
+    'discussion:comment:notify:subject' => 'Neue Antwort im Beitrag: %s',
+    'discussion:comment:notify:body' =>
+        '%s hat im Beitrag "%s" geantwortet:
+
+%s
+
+Schau Dir den Beitrag an und antworte selbst darauf:
+%s
+',
+
+    'item:object:discussion' => "Beiträge",
+    'collection:object:discussion' => 'Beiträge',
+
+    'groups:tool:forum' => 'Gruppen-Beiträge aktivieren',
+
+    'discussion:topic:closed:title' => 'Beitrag geschlossen.',
+    'discussion:topic:closed:desc' => 'Dieser Beitrag ist geschlossen und es können keine neuen Antworten mehr hinzugefügt werden.',
+
+    'discussion:topic:description' => 'Textinhalt des Beitrags',
+
 ];
