@@ -14,6 +14,7 @@ return [
     'wabue:appointment:import:file:label' => 'Event-File',
     'wabue:appointment:import:file:help' => 'An Excel file containing worksheets that hold the appointments to be imported using the headers Was, Von Wann, Bis Wann, Wer, Wo, Art and Ansprechpartner',
     'wabue:appointment:import:submit' => 'Import',
+    'wabue:appointment:import:intro' => 'Please upload the appointments formatted in an Excel file. Please use the <a href="%s">commented template</a> as a default.',
 
     'wabue:appointment:import:check:label' => 'Only check import',
     'wabue:appointment:import:check:help' => "Don't import events, only validate import",

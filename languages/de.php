@@ -162,6 +162,7 @@ Wenn Du das nicht angefordert hast, kontaktiere bitte Deinen Administrator.
     'wabue:appointment:import:file:label' => 'Termin-Datei',
     'wabue:appointment:import:file:help' => 'Eine Excel-Datei mit Arbeitsblättern mit den zu importierenden Terminen gemäß der Kopfzeilen Was, Von Wann, Bis Wann, Wer, Wo, Art and Ansprechpartner',
     'wabue:appointment:import:submit' => 'Importieren',
+    'wabue:appointment:import:intro' => 'Bitte die Termine in einer passend formartierten Excel-Datei hochladen. Die <a href="%s">kommentierte Vorlage</a> kann als Standard benutzt werden.',
 
     'wabue:appointment:import:check:label' => 'Nur prüfen',
     'wabue:appointment:import:check:help' => 'Termine nicht importieren, Importdatei nur prüfen',

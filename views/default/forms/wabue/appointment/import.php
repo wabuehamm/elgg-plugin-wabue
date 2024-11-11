@@ -11,6 +11,15 @@ if (!empty($errors)) {
     echo elgg_view_message('error', $errors);
 }
 
+$file = new ElggFile();
+$file->owner_guid = elgg_get_logged_in_user_guid();
+$file->setFilename('template.xlsx');
+$file->open("write");
+$file->write(file_get_contents(elgg_get_plugins_path().'/wabue/assets/template.xlsx'));
+$file->close();
+
+echo elgg_view_message('help', elgg_echo('wabue:appointment:import:intro', [elgg_get_download_url($file, false, null)]));
+
 echo elgg_view_field([
     '#type' => 'file',
     '#label' => elgg_echo('wabue:appointment:import:file:label'),
