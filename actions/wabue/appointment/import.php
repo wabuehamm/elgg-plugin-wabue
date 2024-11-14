@@ -12,7 +12,7 @@
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Worksheet\CellIterator;
-use PhpOffice\PhpSpreadsheet\Worksheet\Table;
+use PhpOffice\PhpSpreadsheet\Shared;
 
 $headers = [
     "Was",
@@ -44,25 +44,6 @@ $spreadsheet = IOFactory::load($file);
 
 elgg_log('Scanning uploaded spreadsheet');
 
-/**
- * Parses the given string in the required format and returns null on errors or a well formatted date for
- * elgg
- * @param $value string date string
- * @return null|array An array with "date" (epoch of the given date) and "time" (minutes since midnight on the given date) or null if the string could not be parsed
- */
-function parse_input_date(string $value): ?array
-{
-    $parsed_date = date_parse_from_format("Y-m-d H:i", $value);
-    if ($parsed_date["error_count"] > 0) {
-        return null;
-    }
-    return [
-        "epoch" => mktime($parsed_date['hour'], $parsed_date['minute'], 0, $parsed_date['month'], $parsed_date['day'], $parsed_date['year']),
-        "date" => explode(" ", $value)[0],
-        "time_hour" => $parsed_date['hour'],
-        "time_minute" => $parsed_date['minute']
-    ];
-}
 $errors = [];
 $events_imported = 0;
 
@@ -95,16 +76,16 @@ foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
             $value = $worksheet->getCellByColumnAndRow($index + 1, $row->getRowIndex())->getValue();
             switch ($header) {
                 case "Von Wann":
-                    $fromDate = parse_input_date($value);
-                    if (!$fromDate) {
-                        $errors[] = "From date in row has not the right format: $value. Skipping row: $row_text";
+                    $from = Shared\Date::excelToDateTimeObject($value);
+                    if (!$from) {
+                        $errors[] = "From date in row is not an Excel Date time format: $value. Skipping row: $row_text";
                         continue 3;
                     }
                     break;
                 case "Bis Wann":
-                    $toDate = parse_input_date($value);
-                    if (!$toDate) {
-                        $errors[] = "To date in row has not the right format: $value. Skipping row: $row_text";
+                    $to = Shared\Date::excelToDateTimeObject($value);
+                    if (!$to) {
+                        $errors[] = "To date in row is not an Excel Date time format: $value. Skipping row: $row_text";
                         continue 3;
                     }
                     break;
@@ -126,19 +107,19 @@ foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
                     $event[$header] = $value;
             }
         }
-        if (!$fromDate) {
+        if (!$from) {
             $errors[] = "No start date specified. Skipping row: $row_text";
             continue;
         }
-        if (!$toDate) {
+        if (!$to) {
             $errors[] = "No end date specified. Skipping row: $row_text";
             continue;
         }
-        if ($toDate['epoch'] < $fromDate['epoch']) {
+        if ($to < $from) {
             $errors[] = "End date is before start date. Skipping row: $row_text";
             continue;
         }
-        if ($toDate['epoch'] == $fromDate['epoch']) {
+        if ($to == $from) {
             $errors[] = "End date can not be equal to start date. Skipping row: $row_text";
             continue;
         }
@@ -150,14 +131,14 @@ foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
             $errors[] = "Did not catch all required event cells. Skipping row: $row_text";
             continue;
         }
-        elgg_call(ELGG_IGNORE_ACCESS, function () use ($value, $fromDate, $toDate, $organizer, $event, $current_user, $type, $check_only, $events_imported) {
+        elgg_call(ELGG_IGNORE_ACCESS, function () use ($value, $from, $to, $organizer, $event, $current_user, $type, $check_only, $events_imported) {
             set_input('schedule_type', 'fixed');
-            set_input('start_date', $fromDate['date']);
-            set_input('end_date', $toDate['date']);
-            set_input('start_time_hour', $fromDate['time_hour']);
-            set_input('start_time_minute', $fromDate['time_minute']);
-            set_input('end_time_hour', $toDate['time_hour']);
-            set_input('end_time_minute', $toDate['time_minute']);
+            set_input('start_date', $from->format('Y-m-d'));
+            set_input('end_date', $to->format('Y-m-d'));
+            set_input('start_time_hour', $from->format('H'));
+            set_input('start_time_minute', $from->format('i'));
+            set_input('end_time_hour', $to->format('H'));
+            set_input('end_time_minute', $to->format('i'));
             set_input('access_id', 1);
             set_input('title', $event['Was']);
             set_input('description', $event['Wer']);
