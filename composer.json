@@ -13,7 +13,7 @@
     },
     "require": {
         "composer/installers": "^1.0.8",
-        "phpoffice/phpspreadsheet": "1.25.2"
+        "phpoffice/phpspreadsheet": "^3.4.0"
     },
     "conflict": {
         "elgg/elgg": "<3.0.0"
