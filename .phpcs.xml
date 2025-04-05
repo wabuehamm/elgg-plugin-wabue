@@ -1,0 +1,11 @@
+<ruleset name="wabue">
+    <rule ref="vendor/elgg/sniffs/src/Elgg">
+        <exclude name="Generic.WhiteSpace.DisallowSpaceIndent"/>
+    </rule>
+
+    <rule ref="Generic.WhiteSpace.ScopeIndent">
+        <properties>
+            <property name="tabIndent" value="false"/>
+        </properties>
+    </rule>
+</ruleset>

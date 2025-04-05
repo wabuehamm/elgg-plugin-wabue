@@ -2,16 +2,21 @@
 
 namespace Wabue\Core;
 
-use Elgg\BadRequestException;
-use Elgg\Http\Exception\AdminGatekeeperException;
+use Elgg\Exceptions\Configuration\RegistrationException;
+use Elgg\Exceptions\Http\BadRequestException;
+use Elgg\Exceptions\Http\Gatekeeper\AdminGatekeeperException;
 use ElggDiscussion;
-
-require_once(elgg_get_plugins_path(). "/event_calendar/models/model.php");
 
 class WebService
 {
-
-    public function addUser($userString)
+    /**
+     * Adds a new user
+     *
+     * @throws AdminGatekeeperException if request wasn't send by an admin
+     * @throws RegistrationException on a problem with the user registration
+     * @noinspection PhpUnused
+     */
+    public function addUser($userString): int
     {
         if (!elgg_is_admin_logged_in()) {
             throw new AdminGatekeeperException('This request requires an admin');
@@ -19,15 +24,17 @@ class WebService
 
         $userObject = json_decode($userString);
 
-        $existingUser = get_user_by_username($userObject->username);
+        $existingUser = elgg_get_user_by_username($userObject->username);
 
-        if ($existingUser) {
-            $existingUser->delete();
-        }
+        $existingUser?->delete();
 
-        $userGuid = register_user($userObject->username, $userObject->password, $userObject->name, $userObject->email, true);
-
-        $user = get_user($userGuid);
+        $user = elgg_register_user([
+            "username" => $userObject->username,
+            "password" => $userObject->password,
+            "name" => $userObject->name,
+            "email" => $userObject->email,
+            "allow_multiple_emails" => true,
+        ]);
 
         $profileFields = [
             'birthday',
@@ -50,7 +57,13 @@ class WebService
         return $user->guid;
     }
 
-    public function addDiscussion($discussionString)
+    /**
+     * Create a new discussion
+     * @throws BadRequestException If the owner wasn't specified or is wrong
+     * @throws AdminGatekeeperException if the request wasn't send by an admin
+     * @noinspection PhpUnused
+     */
+    public function addDiscussion($discussionString): int
     {
         if (!elgg_is_admin_logged_in()) {
             throw new AdminGatekeeperException('This request requires an admin');
@@ -58,7 +71,7 @@ class WebService
 
         $discussionObject = json_decode($discussionString);
 
-        $owner = get_user_by_username($discussionObject->owner_username);
+        $owner = elgg_get_user_by_username($discussionObject->owner_username);
 
         if (is_null($owner)) {
             throw new BadRequestException("User $discussionObject->owner_username not found.");
@@ -75,79 +88,5 @@ class WebService
         $discussion->save();
 
         return $discussion->guid;
-    }
-
-    public function addEvent($eventString)
-    {
-        if (!elgg_is_admin_logged_in()) {
-            throw new AdminGatekeeperException('This request requires an admin');
-        }
-
-        $eventObject = json_decode($eventString);
-
-        $owner = get_user_by_username($eventObject->owner_username);
-
-        if (is_null($owner)) {
-            throw new BadRequestException("User $eventObject->owner_username not found.");
-        }
-
-        foreach ($eventObject as $key => $value) {
-            set_input($key, $value);
-        }
-        $event = event_calendar_set_event_from_form(0, 0);
-        $event->owner_guid = $owner->guid;
-        $event->save();
-        return $event->guid;
-    }
-
-    public function register()
-    {
-        if (elgg_get_plugin_setting('testmode', 'wabue') == 'on') {
-            elgg_ws_expose_function(
-                'wabue.users.add',
-                array($this, 'addUser'),
-                [
-                    'user' => [
-                        'type' => 'string',
-                        'required' => true,
-                        'description' => 'User object as JSON string'
-                    ]
-                ],
-                'Add a new user to the site',
-                'POST',
-                false,
-                true
-            );
-            elgg_ws_expose_function(
-                'wabue.discussion.add',
-                array($this, 'addDiscussion'),
-                [
-                    'discussion' => [
-                        'type' => 'string',
-                        'required' => true,
-                        'description' => 'Discussion object in json form'
-                    ]
-                ],
-                'Add a new discussion to the site',
-                'POST',
-                false,
-                true
-            );
-            elgg_ws_expose_function(
-                'wabue.event.add',
-                array($this, 'addEvent'),
-                [
-                    'event' => [
-                        'type' => 'string',
-                        'required' => true,
-                        'description' => 'Event object in json form'
-                    ]
-                ],
-                'Add a new event to the site',
-                'POST',
-                false,
-                true
-            );
-        }
     }
 }

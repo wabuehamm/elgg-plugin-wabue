@@ -1,2 +1,2 @@
 <?php
-elgg_require_js("js/useraddProfileFix");
+elgg_import_esm("js/useraddProfileFix");

@@ -2,24 +2,30 @@
 
 namespace Wabue\Core;
 
-class ConfigurePluginsCommand extends \Elgg\Cli\Command {
+use Elgg\Cli\Command;
+
+class ConfigurePluginsCommand extends Command
+{
 
     protected static $defaultName = 'wabue:configure';
 
-    protected function configure() {
+    protected function configure(): void
+    {
         $this->setDescription('Configure the installed plugins to the default settings');
         $this->setHelp('This command configures several options of the required plugins');
     }
 
-    protected function command() {
-        # Enable view change for event calendar
-
-        elgg_set_plugin_setting('allow_view_change', 'yes', 'event_calendar');
-
+    protected function command(): int
+    {
         # Enable polls globally and for forum group
-        elgg_set_plugin_setting('enable_site', 'yes', 'poll');
-        elgg_set_plugin_setting('enable_group', 'yes', 'poll');
-        get_entity(45105)->enableTool('poll');
+        $poll = elgg_get_plugin_from_id('poll');
+        assert(!is_null($poll));
+        $poll->setSetting('enable_site', 'yes');
+        $poll->setSetting('enable_group', 'yes');
+
+        $forumGroup = get_entity(45105);
+        assert($forumGroup instanceof \ElggGroup);
+        $forumGroup->enableTool('poll');
 
         return 0;
     }
