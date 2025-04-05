@@ -32,14 +32,7 @@ if ($showEntity) {
         return;
     }
 
-    $title = elgg_extract('title', $vars);
-    if (!$title) {
-        $title = elgg_view('output/url', [
-            'href' => $entity->getUrl(),
-            'text' => $entity->getDisplayName(),
-            'is_trusted' => true,
-        ]);
-    }
+    $title = elgg_extract('title', $vars) ?: elgg_view_entity_url($entity);
 
     $params = [
         'entity' => $entity,

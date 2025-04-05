@@ -11,14 +11,16 @@ if (!$entity instanceof ElggUser) {
     return;
 }
 
-if (!$entity->isBanned()) {
+if (!$entity->isBanned() && $entity->isValidated() !== false) {
     $subtitle = elgg_extract('subtitle', $vars);
     if (!isset($subtitle)) {
         $subtitle = elgg_view('user/elements/imprint', $vars);
     }
-} else {
+} elseif ($entity->isBanned()) {
     // user is banned
     $subtitle = elgg_echo('banned');
+} else {
+    $subtitle = elgg_echo('unvalidated');
 }
 
 $senior_since = $entity->getProfileData('senior_since');

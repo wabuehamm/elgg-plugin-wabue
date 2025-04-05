@@ -20,7 +20,7 @@ $content = elgg_view('object/elements/field', [
 echo elgg_view_module(
     'info',
     elgg_echo('wabue:profile:email'),
-    $content
+    elgg_format_element('div', ['class' => 'elgg-profile-fields'], $content)
 );
 
 

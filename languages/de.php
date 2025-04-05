@@ -222,4 +222,6 @@ Schau Dir den Beitrag an und antworte selbst darauf:
 
     'discussion:topic:description' => 'Textinhalt des Beitrags',
 
+    # German time format. Needed until Elgg 7
+    'input:time_format' => 'G:i',
 ];

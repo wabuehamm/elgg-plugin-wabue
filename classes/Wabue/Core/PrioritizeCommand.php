@@ -2,30 +2,26 @@
 
 namespace Wabue\Core;
 
-class PrioritizeCommand extends \Elgg\Cli\Command {
+use Elgg\Cli\Command;
 
+class PrioritizeCommand extends Command
+{
     protected static $defaultName = 'wabue:prioritize';
 
-    protected function configure() {
+    protected function configure(): void
+    {
         $this->setDescription('Prioritize the wabue plugin at the last position');
         $this->setHelp('Because we\'re overwriting most stuff here, this plugin needs to be last.');
     }
 
-    protected function command() {
+    protected function command(): int
+    {
         if (elgg_is_active_plugin('filetransport')) {
-            $iam = elgg_get_plugin_from_id('filetransport');
-            $maxPriority = _elgg_get_max_plugin_priority();
-
-            if ($iam->setPriority($maxPriority) == false) {
-                return 1;
-            }
+            $filetransport_plugin = elgg_get_plugin_from_id('filetransport');
+            $filetransport_plugin->setPriority('last');
         }
-        $iam = elgg_get_plugin_from_id('wabue');
-        $maxPriority = _elgg_get_max_plugin_priority();
-
-        if ($iam->setPriority($maxPriority) == false) {
-            return 1;
-        }
+        $wabue_plugin = elgg_get_plugin_from_id('wabue');
+        $wabue_plugin->setPriority('last');
 
         return 0;
     }

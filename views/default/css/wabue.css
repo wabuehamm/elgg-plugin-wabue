@@ -1,12 +1,3 @@
-/** CSS-Specialities for Waldbuehne Hamm **/
-
-/** Hide discussion summaries **/
-
-.elgg-item-object-discussion
-  .elgg-listing-summary-content {
-  display: block;
-}
-
 /** Hide access level selection on profile fields **/
 
 .elgg-form-profile-edit .elgg-input-access {
@@ -19,7 +10,7 @@ li[data-menu-item="popular"] {
   display: none;
 }
 
-/** Better figures **/
+/** Better image borders and captions for coop pages **/
 
 figure {
   border: 1px solid lightgrey;
@@ -31,8 +22,84 @@ figcaption {
 /** Better integrate custom profile fields in the provile view **/
 #profile-details {
   border: 0 !important;
+  padding: 0 !important;
 }
 
-.elgg-profile-fields {
-  padding: 0 !important;
+/** Optimizations for event manager **/
+
+/** Hide Live and Attend-Views **/
+
+.elgg-menu-item-live, .elgg-menu-item-attending {
+  display: none;
+}
+
+/** Always open "profile" panel **/
+
+div.event-manager-edit-profile-toggle {
+  display: none;
+}
+
+div.event-manager-edit-profile-toggle.hidden {
+  display: block !important;
+}
+
+button.event-manager-edit-profile-toggle {
+  display: none;
+}
+
+/** Hide unsupported panels from edit view **/
+
+/** Short description **/
+div.elgg-field:has(input[name=shortdescription]) {
+  display: none;
+}
+
+/** Tags **/
+div.elgg-field-tags {
+  display: none;
+}
+
+/** Comments on **/
+div.elgg-field-input:has(input[name="comments_on"]) {
+  display: none;
+}
+
+/** Access **/
+.elgg-field.elgg-field-access {
+  display: none;
+}
+
+/** Venue **/
+div.elgg-field:has(input[name=venue]) {
+  display: none;
+}
+
+/** Region **/
+div.elgg-field:has(select[name=region]) {
+  display: none;
+}
+
+/** Contact section **/
+section#event-manager-forms-event-edit-contact {
+  display: none;
+}
+
+/** Registration section **/
+section#event-manager-forms-event-edit-registration {
+  display: none;
+}
+
+/** RSVP menu **/
+ul.elgg-menu-event-rsvp {
+  display: none;
+}
+
+/** Announcement period **/
+div.elgg-field:has(input[name=announcement_period]) {
+  display: none;
+}
+
+/** Attendees **/
+li.elgg-item-object-event span:has(.elgg-icon-users) {
+  display: none;
 }

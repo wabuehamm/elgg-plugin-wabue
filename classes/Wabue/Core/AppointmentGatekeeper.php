@@ -2,7 +2,7 @@
 
 namespace Wabue\Core;
 
-use Elgg\HttpException;
+use Elgg\Exceptions\HttpException;
 use Elgg\Request;
 use ElggUser;
 
@@ -13,7 +13,6 @@ use ElggUser;
  */
 class AppointmentGatekeeper
 {
-
     /**
      * Check wether the request is allowed
      *
@@ -22,7 +21,7 @@ class AppointmentGatekeeper
      * @return void
      * @throws HttpException
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): void
     {
         /** @var $user ElggUser **/
         $user = elgg_get_logged_in_user_entity();
@@ -31,5 +30,4 @@ class AppointmentGatekeeper
             throw new HttpException(elgg_echo('wabue:appointments:gatekeeper:error'), 403);
         }
     }
-
 }

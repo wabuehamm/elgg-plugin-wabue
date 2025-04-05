@@ -54,12 +54,16 @@ foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
         $cellIterator = $row->getCellIterator();
         $cellIterator->setIterateOnlyExistingCells(true);
         $row_text = implode(',', iterator_to_array($cellIterator));
-        if ($row->isEmpty(CellIterator::TREAT_NULL_VALUE_AS_EMPTY_CELL | CellIterator::TREAT_EMPTY_STRING_AS_EMPTY_CELL)) {
+        if (
+            $row->isEmpty(
+                CellIterator::TREAT_NULL_VALUE_AS_EMPTY_CELL | CellIterator::TREAT_EMPTY_STRING_AS_EMPTY_CELL
+            )
+        ) {
             continue;
         }
         if (!$headersValid) {
             foreach ($headers as $index => $header) {
-                if (!($worksheet->getCellByColumnAndRow($index + 1, $row->getRowIndex())->getValue() == $header)) {
+                if (!($worksheet->getCell([$index + 1, $row->getRowIndex()])->getValue() == $header)) {
                     $errors[] = "Worksheet " . $worksheet->getTitle() . " doesn't match header validation. Skipping";
                     continue 3;
                 }
@@ -68,26 +72,22 @@ foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
             continue;
         }
         $event = [];
+        /** @var ElggUser $organizer */
         $organizer = null;
-        $fromDate = null;
-        $toDate = null;
+        /** @var DateTime $fromDate */
+        $from = null;
+        /** @var DateTime $toDate */
+        $to = null;
+        /** @var string $type */
         $type = null;
         foreach ($headers as $index => $header) {
-            $value = $worksheet->getCellByColumnAndRow($index + 1, $row->getRowIndex())->getValue();
+            $value = $worksheet->getCell([$index + 1, $row->getRowIndex()])->getValue();
             switch ($header) {
                 case "Von Wann":
                     $from = Shared\Date::excelToDateTimeObject($value);
-                    if (!$from) {
-                        $errors[] = "From date in row is not an Excel Date time format: $value. Skipping row: $row_text";
-                        continue 3;
-                    }
                     break;
                 case "Bis Wann":
                     $to = Shared\Date::excelToDateTimeObject($value);
-                    if (!$to) {
-                        $errors[] = "To date in row is not an Excel Date time format: $value. Skipping row: $row_text";
-                        continue 3;
-                    }
                     break;
                 case "Art":
                     if (!in_array($value, $valid_types)) {
@@ -97,7 +97,7 @@ foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
                     $type = $value;
                     break;
                 case "Ansprechpartner":
-                    $organizer = get_user_by_username($value);
+                    $organizer = elgg_get_user_by_username($value);
                     if (!$organizer) {
                         $errors[] = "User $value not found. Skipping row: $row_text";
                         continue 3;
@@ -107,11 +107,11 @@ foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
                     $event[$header] = $value;
             }
         }
-        if (!$from) {
+        if (is_null($from)) {
             $errors[] = "No start date specified. Skipping row: $row_text";
             continue;
         }
-        if (!$to) {
+        if (is_null($to)) {
             $errors[] = "No end date specified. Skipping row: $row_text";
             continue;
         }
@@ -123,7 +123,7 @@ foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
             $errors[] = "End date can not be equal to start date. Skipping row: $row_text";
             continue;
         }
-        if (!$organizer) {
+        if (is_null($organizer)) {
             $errors[] = "No organizer specified. Skipping row: $row_text";
             continue;
         }
@@ -131,26 +131,33 @@ foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
             $errors[] = "Did not catch all required event cells. Skipping row: $row_text";
             continue;
         }
-        elgg_call(ELGG_IGNORE_ACCESS, function () use ($value, $from, $to, $organizer, $event, $current_user, $type, $check_only, $events_imported) {
-            set_input('schedule_type', 'fixed');
-            set_input('start_date', $from->format('Y-m-d'));
-            set_input('end_date', $to->format('Y-m-d'));
-            set_input('start_time_hour', $from->format('H'));
-            set_input('start_time_minute', $from->format('i'));
-            set_input('end_time_hour', $to->format('H'));
-            set_input('end_time_minute', $to->format('i'));
-            set_input('access_id', 1);
-            set_input('title', $event['Was']);
-            set_input('description', $event['Wer']);
-            set_input('venue', $event['Wo']);
-            set_input('region', $type);
-            if (!$check_only) {
-                $session = elgg()->session;
-                $session->setLoggedInUser($organizer);
-                event_calendar_set_event_from_form(0, 0);
-                $session->setLoggedInUser($current_user);
+        elgg_call(
+            ELGG_IGNORE_ACCESS,
+            function () use (
+                $value,
+                $from,
+                $to,
+                $organizer,
+                $event,
+                $current_user,
+                $type,
+                $check_only,
+                $events_imported
+            ) {
+                $event_object = new Event();
+                $event_object->event_start = $from->getTimestamp();
+                $event_object->event_end = $to->getTimestamp();
+                $event_object->access_id = 1;
+                $event_object->title = $event['Was'];
+                $event_object->description = $event['Wer'];
+                $event_object->location = $event['Wo'];
+                $event_object->event_type = $type;
+                $event_object->owner_guid = $organizer;
+                if (!$check_only) {
+                    $event_object->save();
+                }
             }
-        });
+        );
         $events_imported++;
     }
 }
@@ -158,7 +165,13 @@ foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
 if (count($errors) > 0) {
     return elgg_error_response(
         elgg_echo('wabue:appointment:import:error', [$events_imported]),
-        elgg_generate_url('view:uploadappointments', ['errors' => substr(join('<br />', $errors),0, 2000), 'events_imported' => $events_imported])
+        elgg_generate_url(
+            'view:uploadappointments',
+            [
+                'errors' => substr(join('<br />', $errors), 0, 2000),
+                'events_imported' => $events_imported
+            ]
+        )
     );
 } else {
     return elgg_ok_response(
