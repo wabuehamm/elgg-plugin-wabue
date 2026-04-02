@@ -12,7 +12,7 @@ use Psr\Log\LogLevel;
 use Symfony\Component\Console\Input\InputArgument;
 
 
-class ImportICS extends Command
+class ImportICSCommand extends Command
 {
 
     protected static $defaultName = 'wabue:importics';

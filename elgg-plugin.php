@@ -6,7 +6,8 @@ use Elgg\Router\Middleware\Gatekeeper;
 use Wabue\Core\AnnouncementCommand;
 use Wabue\Core\AppointmentGatekeeper;
 use Wabue\Core\ConfigurePluginsCommand;
-use Wabue\Core\ImportICS;
+use Wabue\Core\ImportICSCommand;
+use Wabue\Core\PluginSettingsCommand;
 use Wabue\Core\PrioritizeCommand;
 use Wabue\Core\TestModeCommand;
 
@@ -22,7 +23,8 @@ return [
         PrioritizeCommand::class,
         TestModeCommand::class,
         AnnouncementCommand::class,
-        ImportICS::class,
+        ImportICSCommand::class,
+        PluginSettingsCommand::class,
     ],
     'routes' => [
         'view:uploadappointments' => [
