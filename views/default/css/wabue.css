@@ -103,3 +103,17 @@ div.elgg-field:has(input[name=announcement_period]) {
 li.elgg-item-object-event span:has(.elgg-icon-users) {
   display: none;
 }
+
+/** Always open "location" panel **/
+
+div.event-manager-edit-location-toggle {
+  display: none;
+}
+
+div.event-manager-edit-location-toggle.hidden {
+  display: block !important;
+}
+
+button.event-manager-edit-location-toggle {
+  display: none;
+}
