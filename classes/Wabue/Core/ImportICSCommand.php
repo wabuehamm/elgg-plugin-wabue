@@ -56,7 +56,7 @@ class ImportICSCommand extends Command
         /** @var Vevent $component */
         foreach ($vcalendar->getComponents('Vevent') as $component) {
             $event = Event::fromVEvent($component);
-
+            $event->access_id = ACCESS_LOGGED_IN;
             $event->save();
             $event_counter++;
         }
