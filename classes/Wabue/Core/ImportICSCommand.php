@@ -55,8 +55,14 @@ class ImportICSCommand extends Command
 
         /** @var Vevent $component */
         foreach ($vcalendar->getComponents('Vevent') as $component) {
+            $owner = elgg_get_user_by_email($component->getOrganizer());
+            if (is_null($owner)) {
+                continue;
+            }
+
             $event = Event::fromVEvent($component);
             $event->access_id = ACCESS_LOGGED_IN;
+            $event->owner_guid = $owner->guid;
             $event->save();
             $event_counter++;
         }
