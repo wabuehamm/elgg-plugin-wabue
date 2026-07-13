@@ -7,6 +7,7 @@ use Wabue\Core\AnnouncementCommand;
 use Wabue\Core\AppointmentGatekeeper;
 use Wabue\Core\ConfigurePluginsCommand;
 use Wabue\Core\ImportICSCommand;
+use Wabue\Core\PageContentCommand;
 use Wabue\Core\PluginSettingsCommand;
 use Wabue\Core\PrioritizeCommand;
 use Wabue\Core\TestModeCommand;
@@ -25,6 +26,7 @@ return [
         AnnouncementCommand::class,
         ImportICSCommand::class,
         PluginSettingsCommand::class,
+        PageContentCommand::class,
     ],
     'routes' => [
         'view:uploadappointments' => [
