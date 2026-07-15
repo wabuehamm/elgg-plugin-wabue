@@ -104,8 +104,7 @@ li.elgg-item-object-event span:has(.elgg-icon-users) {
   display: none;
 }
 
-/** Header image **/
-.elgg-entity-edit-icon-wrapper {
+li.elgg-menu-item-edit-profile-header {
   display: none;
 }
 
