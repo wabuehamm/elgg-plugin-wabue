@@ -121,3 +121,8 @@ div.event-manager-edit-location-toggle.hidden {
 button.event-manager-edit-location-toggle {
   display: none;
 }
+
+.elgg-page-walled-garden > .elgg-inner {
+  max-width: 90% !important;
+  min-width: 0 !important;
+}
