@@ -126,3 +126,7 @@ button.event-manager-edit-location-toggle {
   max-width: 90% !important;
   min-width: 0 !important;
 }
+
+.elgg-item-object-event .elgg-listing-access {
+  display: none;
+}
