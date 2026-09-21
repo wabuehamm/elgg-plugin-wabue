@@ -6,6 +6,7 @@ use Elgg\Router\Middleware\Gatekeeper;
 use Wabue\Core\AnnouncementCommand;
 use Wabue\Core\AppointmentGatekeeper;
 use Wabue\Core\ConfigurePluginsCommand;
+use Wabue\Core\CorrectNotificationsCommand;
 use Wabue\Core\ImportICSCommand;
 use Wabue\Core\PageContentCommand;
 use Wabue\Core\PluginSettingsCommand;
@@ -27,6 +28,7 @@ return [
         ImportICSCommand::class,
         PluginSettingsCommand::class,
         PageContentCommand::class,
+        CorrectNotificationsCommand::class,
     ],
     'routes' => [
         'view:uploadappointments' => [
