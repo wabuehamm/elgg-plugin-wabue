@@ -12,6 +12,7 @@ class PageContentCommand extends Command
 
     protected function configure(): void
     {
+        $this->setName(PageContentCommand::$defaultName);
         $this->setDescription('Ex- or import set a page content');
         $this->setHelp('This command exports the content of a page or imports it');
         $this->addArgument('mode', InputArgument::REQUIRED, 'The mode to use (export/import)');

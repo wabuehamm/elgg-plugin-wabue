@@ -10,6 +10,7 @@ class PrioritizeCommand extends Command
 
     protected function configure(): void
     {
+        $this->setName(PrioritizeCommand::$defaultName);
         $this->setDescription('Prioritize the wabue plugin at the last position');
         $this->setHelp('Because we\'re overwriting most stuff here, this plugin needs to be last.');
     }

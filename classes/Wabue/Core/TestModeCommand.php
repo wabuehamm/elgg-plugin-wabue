@@ -11,6 +11,7 @@ class TestModeCommand extends Command
 
     protected function configure(): void
     {
+        $this->setName(TestModeCommand::$defaultName);
         $this->setDescription('Control the testmode');
         $this->setHelp('This command can control the testmode setting of the Wabue plugin');
         $this->addOption('testmode', 't', InputOption::VALUE_REQUIRED, 'Configure testmode (off/on)');

@@ -11,6 +11,7 @@ class PluginSettingsCommand extends Command
 
     protected function configure(): void
     {
+        $this->setName(PluginSettingsCommand::$defaultName);
         $this->setDescription('Manage the settings of plugins');
         $this->setHelp('Get and set the settings of specific plugins');
         $this->addArgument('mode', InputArgument::REQUIRED, "Mode to use (get/set/list)");

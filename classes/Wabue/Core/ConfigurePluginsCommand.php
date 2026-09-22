@@ -2,6 +2,7 @@
 
 namespace Wabue\Core;
 
+use Cake\Core\Configure;
 use Elgg\Cli\Command;
 
 class ConfigurePluginsCommand extends Command
@@ -11,6 +12,7 @@ class ConfigurePluginsCommand extends Command
 
     protected function configure(): void
     {
+        $this->setName(ConfigurePluginsCommand::$defaultName);
         $this->setDescription('Configure the installed plugins to the default settings');
         $this->setHelp('This command configures several options of the required plugins');
     }

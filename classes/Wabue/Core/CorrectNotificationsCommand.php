@@ -10,6 +10,7 @@ class CorrectNotificationsCommand extends Command
 
     protected function configure(): void
     {
+        $this->setName(CorrectNotificationsCommand::$defaultName);
         $this->setDescription('Correct the notifications for the Forum group');
     }
 

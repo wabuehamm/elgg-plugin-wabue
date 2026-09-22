@@ -19,6 +19,7 @@ class ImportICSCommand extends Command
 
     protected function configure(): void
     {
+        $this->setName(ImportICSCommand::$defaultName);
         $this->setDescription('Import an iCal file into the event manager');
         $this->setHelp('This command loads an ICal file and fills the global event manager calendar with its events');
         $this->addArgument('file', InputArgument::REQUIRED);

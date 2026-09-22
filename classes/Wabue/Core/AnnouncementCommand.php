@@ -12,6 +12,7 @@ class AnnouncementCommand extends Command
 
     protected function configure(): void
     {
+        $this->setName(AnnouncementCommand::$defaultName);
         $this->setDescription('Set a warning announcement banner');
         $this->setHelp(
             'This command creates a warning announcement using the site_announcements mod e.g. for integration systems'
