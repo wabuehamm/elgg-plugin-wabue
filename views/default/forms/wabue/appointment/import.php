@@ -18,7 +18,7 @@ $file->open("write");
 $file->write(file_get_contents(elgg_get_plugins_path().'/wabue/assets/template.xlsx'));
 $file->close();
 
-echo elgg_view_message('help', elgg_echo('wabue:appointment:import:intro', [elgg_get_download_url($file, false, null)]));
+echo elgg_view_message('help', elgg_echo('wabue:appointment:import:intro', [elgg_get_download_url($file, false, "")]));
 
 echo elgg_view_field([
     '#type' => 'file',
