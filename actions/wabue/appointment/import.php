@@ -14,6 +14,16 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Worksheet\CellIterator;
 use PhpOffice\PhpSpreadsheet\Shared;
 
+function roundToNextHour($date) {
+    $minutes = $date->format('i');
+    if ($minutes > 0) {
+        $date->modify("+1 hour");
+        $date->modify('-'.$minutes.' minutes');
+    }
+    return $date;
+}
+
+
 $headers = [
     "Was",
     "Von Wann",
@@ -38,14 +48,16 @@ $valid_types = [
     "Abend",
 ];
 
+$errors = [];
+
 $check_only = get_input('check', 'yes') == 'yes';
 $file = elgg_get_uploaded_file('import');
-$spreadsheet = IOFactory::load($file);
+try {
+    $spreadsheet = IOFactory::load($file);
 
 elgg_log('Scanning uploaded spreadsheet');
 
-$errors = [];
-$events_imported = 0;
+$events_imported = [];
 
 foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
     $current_user = elgg_get_logged_in_user_entity();
@@ -84,10 +96,29 @@ foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
             $value = $worksheet->getCell([$index + 1, $row->getRowIndex()])->getValue();
             switch ($header) {
                 case "Von Wann":
-                    $from = Shared\Date::excelToDateTimeObject($value);
+                    if (!(is_int($value) || is_float($value))){
+                        $errors[]="Date time $value should be int or float.";
+                        continue 3;
+                    }
+                    try {
+                        $from = roundToNextHour(Shared\Date::excelToDateTimeObject($value));
+                    } catch (Exception $e) {
+                        $errors[]="Can't interpret date time field $value: ". $e->getMessage();
+                        continue 3;
+                    }
+
                     break;
                 case "Bis Wann":
-                    $to = Shared\Date::excelToDateTimeObject($value);
+                    if (!(is_int($value) || is_float($value))){
+                        $errors[]="Date time $value should be int or float.";
+                        continue 3;
+                    }
+                    try {
+                        $to = roundToNextHour(Shared\Date::excelToDateTimeObject($value));
+                    } catch (Exception $e) {
+                        $errors[]="Can't interpret date time field $value: ". $e->getMessage();
+                        continue 3;
+                    }
                     break;
                 case "Art":
                     if (!in_array($value, $valid_types)) {
@@ -142,7 +173,7 @@ foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
                 $current_user,
                 $type,
                 $check_only,
-                $events_imported
+                &$events_imported
             ) {
                 $event_object = new Event();
                 $event_object->event_start = $from->getTimestamp();
@@ -152,31 +183,46 @@ foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
                 $event_object->description = $event['Wer'];
                 $event_object->location = $event['Wo'];
                 $event_object->event_type = $type;
-                $event_object->owner_guid = $organizer;
+                $event_object->owner_guid = $organizer->getGUID();
+
+                $events_imported[] = sprintf(
+                    "%s/%s (%s - %s) (%s@%s) [%s (%s)]",
+                    $event_object->event_type,
+                    $event_object->title,
+                    DateTime::createFromFormat("U", $event_object->event_start)->format(DateTimeInterface::ATOM),
+                    DateTime::createFromFormat("U", $event_object->event_end)->format(DateTimeInterface::ATOM),
+                    $event_object->description,
+                    $event_object->location,
+                    $event_object->owner_guid,
+                    get_user($event_object->owner_guid)->getDisplayName(),
+                );
                 if (!$check_only) {
                     $event_object->save();
                 }
             }
         );
-        $events_imported++;
     }
+}
+
+} catch (Exception $e) {
+    $errors[] = "Can't load spreadsheet file: ". $e->getMessage();
 }
 
 if (count($errors) > 0) {
     return elgg_error_response(
-        elgg_echo('wabue:appointment:import:error', [$events_imported]),
+        elgg_echo('wabue:appointment:import:error', [count($events_imported)]),
         elgg_generate_url(
             'view:uploadappointments',
             [
                 'errors' => substr(join('<br />', $errors), 0, 2000),
-                'events_imported' => $events_imported
+                'events_imported' => count($events_imported)
             ]
         )
     );
 } else {
     return elgg_ok_response(
         '',
-        elgg_echo('wabue:appointment:import:successful', [$events_imported]),
+        elgg_echo('wabue:appointment:import:successful', [count($events_imported), join("<br /><br />", $events_imported)]),
         elgg_generate_url('view:uploadappointments')
     );
 }
