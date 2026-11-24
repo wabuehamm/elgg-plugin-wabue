@@ -74,7 +74,7 @@ Schaue es Dir an und kommentiere selbst:
     'wabue:settings:appointmentusers:help' => 'Benutzer*innen, die den Excel-Terminupload nutzen können. Ein Benutzername pro Zeile.',
     'wabue:appointments:gatekeeper:error' => 'Du bist nicht für diesen Service berechtigt',
     'wabue:appointment:import:error' => 'Es traten Fehler beim Importieren der Termine auf. %d Termine waren erfolgreich',
-    'wabue:appointment:import:successful' => '%d Termine erfolgreich hochgeladen',
+    'wabue:appointment:import:successful' => '%d Termine erfolgreich hochgeladen: <br /> %s',
     'wabue:appointment:import:file:label' => 'Termin-Datei',
     'wabue:appointment:import:file:help' => 'Eine Excel-Datei mit Arbeitsblättern mit den zu importierenden Terminen gemäß der Kopfzeilen Was, Von Wann, Bis Wann, Wer, Wo, Art and Ansprechpartner',
     'wabue:appointment:import:submit' => 'Importieren',
